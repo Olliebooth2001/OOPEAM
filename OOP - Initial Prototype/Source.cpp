@@ -30,18 +30,18 @@ void createHardcodedTestData()
 	Player* u3 = new Player("Charlie", "password", "2018-09-24");
 
 	// With some games in their library
-	u1->library[0] = new LibraryItem("2018-06-17", app.GetStore().games.first());
+	u1->library.addInFront(new LibraryItem("2018-06-17", app.GetStore().games[1]->item));
 	//u1->library[1] = new LibraryItem("2018-06-18", app.GetStore().games.first());
-	u2->library[0] = new LibraryItem("2018-09-19", app.GetStore().games.first());
+	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games[0]->item));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
-	u3->library[0] = new LibraryItem("2018-09-24", app.GetStore().games.first());
+	u3->library.addInFront(new LibraryItem("2018-09-24", app.GetStore().games[2]->item));
 	//u3->library[1] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
 	// Make an account and attach the users
-	app.accounts[0] = new Account("alice@shu.com", "password", "2018-06-16");
-	app.accounts[0]->users[0] = u1;
-	app.accounts[0]->users[1] = u2;
-	app.accounts[0]->users[2] = u3;
+	app.accounts.addInFront( new Account("alice@shu.com", "password", "2018-06-16"));
+	app.accounts[0]->item->users.addInFront(u1);
+	app.accounts[0]->item->users.addInFront(u2);
+	app.accounts[0]->item->users.addInFront(u3);
 
 	// TODO: We need a login menu for accounts, for now we log in the only account
 	app.LoginAccount("alice@shu.ac.uk", "password");
@@ -110,7 +110,7 @@ char showLoginUserMenuAndGetUserChoice(Account *account)
 	// Output user list
 	for (int i = 0; i < 3; i++) // TODO: Hardcoded, change when using List<T>
 	{
-		std::cout << "  " << (i + 1) << ") " << account->users[i]->GetUsername() << "\n";
+		std::cout << "  " << (i + 1) << ") " << account->users[i]->item->GetUsername() << "\n";
 	}
 
 	// Output rest of menu
@@ -212,7 +212,7 @@ void loginUserMenu()
 
 				if (index >= 0 && index < 3) // TODO: Hardcoded numbers, change when using List<T>
 				{
-					std::string username = app.GetCurrentAccount()->users[index]->GetUsername();
+					std::string username = app.GetCurrentAccount()->users[index]->item->GetUsername();
 
 					std::cout << "  Enter password for " << username << ": ";
 					if (app.LoginUser(username, Utils::getLineFromUser()))

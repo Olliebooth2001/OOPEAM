@@ -1,5 +1,6 @@
 #include "Application.h"
 
+
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
 }
@@ -11,6 +12,38 @@ Application::~Application()
 		delete accounts[i];
 	}
 }
+bool Application::LogIn(std::string& username, std::string& password) {
+	
+	bool passFlag;
+	bool userFlag;
+	for (int i = 0; i < accounts.length(); i++) 
+	{
+		for (int a = 0; a < accounts[i]->item->users.length(); a++) 
+		{
+			if (accounts[i]->item->users[a]->item->GetUsername() == username) {
+				userFlag = true;
+			}
+		}
+		for (int a = 0; a < accounts[i]->item->users.length(); a++)
+		{
+			if (accounts[i]->item->users[a]->item->GetPassword() == password) {
+				passFlag = true;
+			}
+		}
+
+	}
+	if (passFlag == true && userFlag == true) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+
+
+
+}
+
 
 bool Application::IsUserLoggedIn() const
 {

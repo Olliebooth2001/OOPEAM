@@ -7,9 +7,12 @@
 #include "Admin.h"
 #include "Utils.h"
 #include "Date.h"
+#include "MainMenu.h"
 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
+
+
 void createHardcodedTestData()
 {		
 	// Setup store with some games
@@ -260,7 +263,7 @@ void main()
 	createHardcodedTestData();
 
 	// TODO: app.Load();
-
+		//MainMenu("MAIN MENU", &app);
 	mainMenu(); // TODO: replace with proper menu system
 
 	// TODO: app.Save();

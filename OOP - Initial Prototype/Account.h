@@ -7,15 +7,16 @@
 
 class Account
 {
-	public:
-		Account(const std::string&, const std::string&, const Date&);
-		~Account();
+public:
+	Account(const std::string&, const std::string&, const Date&);
+	~Account();
 
 
-		List <User*> users; 
+	List <User*> users;
 
-		
-	private:
-		std::string email;
-		std::string password;
-		Date created; 
+
+private:
+	std::string email;
+	std::string password;
+	Date created;
+};

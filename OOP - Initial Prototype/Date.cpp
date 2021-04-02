@@ -20,3 +20,10 @@ void Date::GetCurrentDate() {
     int Year = newtime.tm_year - 100;
     std::cout << Day << " / " << Month << " / " << Year;
 }
+std::string Date::GetDate() {
+
+    std::string date = std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day);
+    return date;
+
+}
+

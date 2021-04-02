@@ -6,13 +6,12 @@
 #include "Player.h"
 #include "Admin.h"
 #include "Utils.h"
-
+#include "Date.h"
 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
-
 void createHardcodedTestData()
-{
+{		
 	// Setup store with some games
 	app.GetStore().games.addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
 	app.GetStore().games.addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15));
@@ -25,20 +24,20 @@ void createHardcodedTestData()
 	app.GetStore().games.addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15));
 
 	// Create some users
-	Player* u1 = new Admin("Alice", "password", "2018-06-16");
-	Player* u2 = new Player("Bob", "password", "2018-09-19");
-	Player* u3 = new Player("Charlie", "password", "2018-09-24");
+	Player* u1 = new Admin("Alice", "password", Date(2018, 06, 16));
+	Player* u2 = new Player("Bob", "password", Date(2018,9,19));
+	Player* u3 = new Player("Charlie", "password", Date(2018,9,24));
 
 	// With some games in their library
-	u1->library.addInFront(new LibraryItem("2018-06-17", app.GetStore().games[1]->item));
+	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().games[1]->item));
 	//u1->library[1] = new LibraryItem("2018-06-18", app.GetStore().games.first());
-	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games[0]->item));
+	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().games[0]->item));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
-	u3->library.addInFront(new LibraryItem("2018-09-24", app.GetStore().games[2]->item));
+	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().games[2]->item));
 	//u3->library[1] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
 	// Make an account and attach the users
-	app.accounts.addInFront( new Account("alice@shu.com", "password", "2018-06-16"));
+	app.accounts.addInFront( new Account("alice@shu.com", "password", Date(2018,06,16)));
 	app.accounts[0]->item->users.addInFront(u1);
 	app.accounts[0]->item->users.addInFront(u2);
 	app.accounts[0]->item->users.addInFront(u3);

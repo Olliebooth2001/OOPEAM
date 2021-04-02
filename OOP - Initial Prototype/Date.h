@@ -17,7 +17,7 @@ public:
 
 
 	void GetCurrentDate();
-
+	std::string GetDate();
 
 private:
 	int day;

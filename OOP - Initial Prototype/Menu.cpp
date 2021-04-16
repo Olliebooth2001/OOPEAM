@@ -7,17 +7,20 @@ Menu::Menu(const std::string& title, Application* app) : title(title), app(app)
 void Menu::Paint()
 {
 	bool readyToGoBack = false;
-
+	
 	while (!readyToGoBack)
 	{
 		Header();
 		OutputOptions();
 		Line();
-		Option('B', "Back");
+			Option('B', "Back");
+				
+		
 		Footer();
 
 		char choice = Utils::getCharFromUser();
-
+	
+		
 		if (choice == 'B')
 		{
 			readyToGoBack = true;
@@ -26,6 +29,7 @@ void Menu::Paint()
 		{
 			readyToGoBack = HandleChoice(choice);
 		}
+					
 	}
 }
 

@@ -26,7 +26,7 @@ bool StoreMenu::HandleChoice(char choice)
 	if (index >= 0 && index < games.length())
 	{
 
-	  GameMenu(games[index]->GetName(), app, app->GetStore().getGames()[index]);
+	  GameMenu(games[index]->GetName(), app, app->GetStore().getGames()[index]).OutputOptions();
 
 	  //ollie go poopoo
 	  

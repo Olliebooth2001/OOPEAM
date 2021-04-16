@@ -18,15 +18,15 @@ bool Application::LogIn(std::string& username, std::string& password) {
 	bool userFlag = false;
 	for (int i = 0; i < accounts.length(); i++) 
 	{
-		for (int a = 0; a < accounts[i]->users.length(); a++) 
+		for (int a = 0; a < accounts[i]->getUsers().length(); a++) 
 		{
-			if (accounts[i]->users[a]->GetUsername() == username) {
+			if (accounts[i]->getUsers()[a]->GetUsername() == username) {
 				userFlag = true;
 			}
 		}
-		for (int a = 0; a < accounts[i]->users.length(); a++)
+		for (int a = 0; a < accounts[i]->getUsers().length(); a++)
 		{
-			if (accounts[i]->users[a]->GetPassword() == password) {
+			if (accounts[i]->getUsers()[a]->GetPassword() == password) {
 				passFlag = true;
 			}
 		}
@@ -78,10 +78,10 @@ bool Application::LoginAccount(const std::string& email, const std::string& pass
 	return true;
 }
 
-bool Application::LoginUser(const std::string& username, const std::string& password)
+bool Application::LoginUser(int i)
 {
 	// TODO: This currently always logs you in as the first user
-	currentUser = currentAccount->users[0];
+	currentUser = currentAccount->getUsers()[i];
 
 	return true;
 }

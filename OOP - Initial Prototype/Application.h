@@ -17,7 +17,7 @@ class Application
 		Store& GetStore();
 
 		bool LoginAccount(const std::string& email, const std::string& password);
-		bool LoginUser(const std::string& username, const std::string& password);
+		bool LoginUser(int i);
 		void LogoutUser();
 		bool LogIn(std::string& username, std::string& password);
 		

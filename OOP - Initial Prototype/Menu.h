@@ -12,7 +12,7 @@ class Menu
 public:
 	Menu(const std::string& title, Application* app);
 
-	void Paint();
+	virtual void Paint();
 
 	// Use this function to output all the options specific to your menu
 	virtual void OutputOptions() = 0;

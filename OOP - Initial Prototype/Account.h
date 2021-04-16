@@ -10,12 +10,13 @@ class Account
 public:
 	Account(const std::string&, const std::string&, const Date&);
 	~Account();
-
-
-	List <User*> users;
+	List <User*> getUsers();
+	void addUser(User* user);
+	
 
 
 private:
+	List <User*> users;
 	std::string email;
 	std::string password;
 	Date created;

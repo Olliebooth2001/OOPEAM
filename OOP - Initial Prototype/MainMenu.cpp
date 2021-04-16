@@ -11,8 +11,8 @@ void MainMenu::OutputOptions()
 
 	if (app->IsUserLoggedIn())
 	{
-		Option('P', "View Profile");
-		Option('L', "Logout");
+		Option('P', "View " + app->GetCurrentUser()->GetUsername() +"'s"+" Profile");
+		Option('L', "Logout from " + app->GetCurrentUser()->GetUsername()+"'s Account");
 	}
 	else
 	{
@@ -41,15 +41,11 @@ bool MainMenu::HandleChoice(char choice)
 		}
 		else
 		{
+			
 			// this would need to go to a LoginMenu - similar to StoreMenu
 			// instead we just set logged in to true on the main app object
-			while(true){
-				std::string tempUsername = Question("Please enter username");
-				std::string tempPassword = Question("Please enter password");
-				if (app->LogIn(tempUsername, tempPassword)) {
-					break;
-				}
-			}
+		
+			LoginUserMenu("LOGIN USER MENU",app);
 			
 		}
 	} break;
@@ -57,7 +53,7 @@ bool MainMenu::HandleChoice(char choice)
 	{
 		if (app->IsUserLoggedIn())
 		{
-			BlockingMessage("Not implemented, press return to continue");
+			//BlockingMessage("Not implemented, press return to continue");
 			// this needs to go to a profile page - similar to StoreMenu
 			// notice the if - this only works if somebody is logged in
 		}

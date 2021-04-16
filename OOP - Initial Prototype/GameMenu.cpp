@@ -5,12 +5,18 @@ GameMenu::GameMenu(const std::string& title, Application* app, Game* game) : Men
 	Paint(); // required in constructor
 }
 
-void GameMenu::DisplayGame() {
 
-	Line(game->GetName());
+
+void GameMenu::OutputOptions()  {
 	Line(game->GetDescription()) ;
 	Line(std::to_string(game->GetCost()));
 }
+
+bool GameMenu::HandleChoice(char choice) {
+	return true;
+}
+
+
 
 //bool GameMenu::HandleChoice(char choice)
 //{

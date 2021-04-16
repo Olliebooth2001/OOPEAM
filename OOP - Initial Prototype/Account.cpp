@@ -12,3 +12,12 @@ Account::~Account()
 		delete users[i];
 	}
 }
+
+List <User*> Account::getUsers() 
+{
+	return users;
+}
+void Account::addUser(User* user)
+{
+	users.addAtEnd(user);
+}

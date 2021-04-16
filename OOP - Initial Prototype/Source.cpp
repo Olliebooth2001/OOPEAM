@@ -40,9 +40,9 @@ void createHardcodedTestData()
 
 	// Make an account and attach the users
 	app.accounts.addInFront( new Account("alice@shu.com", "password", Date(2018,06,16)));
-	app.accounts[0]->users.addInFront(u1);
-	app.accounts[0]->users.addInFront(u2);
-	app.accounts[0]->users.addInFront(u3);
+	app.accounts[0]->addUser(u1);
+	app.accounts[0]->addUser(u2);
+	app.accounts[0]->addUser(u3);
 
 	// TODO: We need a login menu for accounts, for now we log in the only account
 	app.LoginAccount("alice@shu.ac.uk", "password");
@@ -111,7 +111,7 @@ char showLoginUserMenuAndGetUserChoice(Account *account)
 	// Output user list
 	for (int i = 0; i < 3; i++) // TODO: Hardcoded, change when using List<T>
 	{
-		std::cout << "  " << (i + 1) << ") " << account->users[i]->GetUsername() << "\n";
+		std::cout << "  " << (i + 1) << ") " << account->getUsers()[i]->GetUsername() << "\n";
 	}
 
 	// Output rest of menu
@@ -213,13 +213,13 @@ void loginUserMenu()
 
 				if (index >= 0 && index < 3) // TODO: Hardcoded numbers, change when using List<T>
 				{
-					std::string username = app.GetCurrentAccount()->users[index]->GetUsername();
+					std::string username = app.GetCurrentAccount()->getUsers()[index]->GetUsername();
 
 					std::cout << "  Enter password for " << username << ": ";
-					if (app.LoginUser(username, Utils::getLineFromUser()))
+					/*if (app.LoginUser(username, Utils::getLineFromUser()))
 					{
 						readyToGoBack = true;
-					}
+					}*/
 				}
 			} break;
 		}

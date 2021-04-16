@@ -10,11 +10,12 @@ class GameMenu : public Menu
 public:
 	GameMenu(const std::string& title, Application* app, Game* game);
 
-	void DisplayGame() ;
-	/*bool HandleChoice(char choice) final;*/
+	void OutputOptions() final override;
+
+	bool HandleChoice(char choice) final;
 	
 private:
-	
+
 	Game* game;
 
 };

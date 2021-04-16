@@ -1,11 +1,12 @@
-#include "MainMenu.h"
+#include "LoginUserMenu.h"
 
-MainMenu::MainMenu(const std::string& title, Application* app) : Menu(title, app)
+
+LoginUserMenu::LoginUserMenu(const std::string& title, Application* app) : Menu(title, app)
 {
 	Paint(); // required in constructor
 }
 
-void MainMenu::OutputOptions()
+void LoginUserMenu::OutputOptions()
 {
 	Option('S', "Browse Store");
 
@@ -20,14 +21,13 @@ void MainMenu::OutputOptions()
 	}
 }
 
-bool MainMenu::HandleChoice(char choice)
+bool LoginUserMenu::HandleChoice(char choice)
 {
 	switch (choice)
 	{
 	case 'S':
 	{
 		StoreMenu("STORE", app, app->GetStore().getGames());
-		
 	} break;
 	case 'L':
 	{
@@ -43,14 +43,14 @@ bool MainMenu::HandleChoice(char choice)
 		{
 			// this would need to go to a LoginMenu - similar to StoreMenu
 			// instead we just set logged in to true on the main app object
-			while(true){
+			while (true) {
 				std::string tempUsername = Question("Please enter username");
 				std::string tempPassword = Question("Please enter password");
 				if (app->LogIn(tempUsername, tempPassword)) {
 					break;
 				}
 			}
-			
+
 		}
 	} break;
 	case 'P':

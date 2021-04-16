@@ -1,17 +1,17 @@
 #include "StoreMenu.h"
 
 
-StoreMenu::StoreMenu(const std::string& title, Application* app) : Menu(title, app)
+StoreMenu::StoreMenu(const std::string& title, Application* app, List<Game*> games) : Menu(title, app)
 {
 	Paint(); // required in constructor
 }
 
 void StoreMenu::OutputOptions()
 {
-	for (int i = 0; i < games.size(); i++)
+	for (int i = 0; i < games.length(); i++)
 	{
 		// adding 1 so the display is nicer for the user
-		Option(i + 1, games[i]);
+		Option(i + 1, games[i]->item->GetName());
 	}
 }
 
@@ -22,11 +22,24 @@ bool StoreMenu::HandleChoice(char choice)
 	// this reverses the + 1 above and lets us do the range check below
 	int index = choice - '1';
 
-	if (index >= 0 && index < games.size())
+	if (index >= 0 && index < games.length())
 	{
 		BlockingMessage("Not implemented, press return to continue");
 		// go to game detail page
 	}
 
 	return false;
+}
+ 
+List<Game*> StoreMenu::getGames() 
+{
+
+	return games;
+
+}
+void StoreMenu::addGame(Game* games) 
+{
+
+
+
 }

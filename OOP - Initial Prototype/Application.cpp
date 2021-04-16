@@ -14,8 +14,8 @@ Application::~Application()
 }
 bool Application::LogIn(std::string& username, std::string& password) {
 	
-	bool passFlag;
-	bool userFlag;
+	bool passFlag = false;
+	bool userFlag = false;
 	for (int i = 0; i < accounts.length(); i++) 
 	{
 		for (int a = 0; a < accounts[i]->item->users.length(); a++) 

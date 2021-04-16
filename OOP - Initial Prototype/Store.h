@@ -8,7 +8,7 @@ class Store
 	public:
 		Store();
 		~Store();
-		List<Game*> games;
-
+		List<Game*>& getGames();
 	private:
+		List<Game*> games;
 };

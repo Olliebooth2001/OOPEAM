@@ -7,21 +7,23 @@
 #include "Admin.h"
 #include "Utils.h"
 #include "Date.h"
+#include "MainMenu.h"
 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
+
 void createHardcodedTestData()
 {		
 	// Setup store with some games
-	app.GetStore().games.addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
-	app.GetStore().games.addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15));
-	app.GetStore().games.addAtEnd(new Game("Factorio", "Build a complicated factory in space.", 1599, 12));
-	app.GetStore().games.addAtEnd(new Game("LIMBO", "Watch out for that spider.", 299, 12));
-	app.GetStore().games.addAtEnd(new Game("INSIDE", "What are those scientists even doing?!", 1299, 15));
-	app.GetStore().games.addAtEnd(new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15));
-	app.GetStore().games.addAtEnd(new Game("Half Life 3", "It's never coming out.", 5999, 18));
-	app.GetStore().games.addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18));
-	app.GetStore().games.addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15));
+	app.GetStore().getGames().addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
+	app.GetStore().getGames().addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15));
+	app.GetStore().getGames().addAtEnd(new Game("Factorio", "Build a complicated factory in space.", 1599, 12));
+	app.GetStore().getGames().addAtEnd(new Game("LIMBO", "Watch out for that spider.", 299, 12));
+	app.GetStore().getGames().addAtEnd(new Game("INSIDE", "What are those scientists even doing?!", 1299, 15));
+	app.GetStore().getGames().addAtEnd(new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15));
+	app.GetStore().getGames().addAtEnd(new Game("Half Life 3", "It's never coming out.", 5999, 18));
+	app.GetStore().getGames().addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18));
+	app.GetStore().getGames().addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15));
 
 	// Create some users
 	Player* u1 = new Admin("Alice", "password", Date(2018, 06, 16));
@@ -29,18 +31,18 @@ void createHardcodedTestData()
 	Player* u3 = new Player("Charlie", "password", Date(2018,9,24));
 
 	// With some games in their library
-	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().games[1]->item));
+	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]));
 	//u1->library[1] = new LibraryItem("2018-06-18", app.GetStore().games.first());
-	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().games[0]->item));
+	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
-	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().games[2]->item));
+	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]));
 	//u3->library[1] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
 	// Make an account and attach the users
 	app.accounts.addInFront( new Account("alice@shu.com", "password", Date(2018,06,16)));
-	app.accounts[0]->item->users.addInFront(u1);
-	app.accounts[0]->item->users.addInFront(u2);
-	app.accounts[0]->item->users.addInFront(u3);
+	app.accounts[0]->users.addInFront(u1);
+	app.accounts[0]->users.addInFront(u2);
+	app.accounts[0]->users.addInFront(u3);
 
 	// TODO: We need a login menu for accounts, for now we log in the only account
 	app.LoginAccount("alice@shu.ac.uk", "password");
@@ -81,10 +83,10 @@ char showStoreMenuAndGetUserChoice()
 	std::cout << "                    \n";
 
 	// Output game list
-	for (int i = 0; i < app.GetStore().games.length()-1; i++) // TODO: Hardcoded, change when using List<T>
+	for (int i = 0; i < app.GetStore().getGames().length()-1; i++) // TODO: Hardcoded, change when using List<T>
 	{
 		//std::cout << "  " << (i + 1) << ") " << app.GetStore().games.GetItem(i)->item->GetName() << "\n";
-		std::cout << "  " << (i + 1) << ") " << app.GetStore().games[i]->item->GetName() << "\n";
+		std::cout << "  " << (i + 1) << ") " << app.GetStore().getGames()[i]->GetName() << "\n";
 	}
 
 	// TODO: Implement search store option
@@ -109,7 +111,7 @@ char showLoginUserMenuAndGetUserChoice(Account *account)
 	// Output user list
 	for (int i = 0; i < 3; i++) // TODO: Hardcoded, change when using List<T>
 	{
-		std::cout << "  " << (i + 1) << ") " << account->users[i]->item->GetUsername() << "\n";
+		std::cout << "  " << (i + 1) << ") " << account->users[i]->GetUsername() << "\n";
 	}
 
 	// Output rest of menu
@@ -186,7 +188,7 @@ void storeMenu()
 
 				if (index >= 0 && index < 9) // TODO: Hardcoded numbers, change when using List<T>
 				{
-					gameMenu(app.GetStore().games[index]->item);
+					gameMenu(app.GetStore().getGames()[index]);
 				}
 			} break;
 		}
@@ -211,7 +213,7 @@ void loginUserMenu()
 
 				if (index >= 0 && index < 3) // TODO: Hardcoded numbers, change when using List<T>
 				{
-					std::string username = app.GetCurrentAccount()->users[index]->item->GetUsername();
+					std::string username = app.GetCurrentAccount()->users[index]->GetUsername();
 
 					std::cout << "  Enter password for " << username << ": ";
 					if (app.LoginUser(username, Utils::getLineFromUser()))
@@ -260,8 +262,8 @@ void main()
 	createHardcodedTestData();
 
 	// TODO: app.Load();
-
-	mainMenu(); // TODO: replace with proper menu system
+	MainMenu("MAIN MENU", &app);
+	//mainMenu(); // TODO: replace with proper menu system
 
 	// TODO: app.Save();
 }

@@ -3,7 +3,6 @@
 #include "Account.h"
 #include "User.h"
 #include "Store.h"
-
 class Application
 {
 	public:
@@ -20,6 +19,7 @@ class Application
 		bool LoginAccount(const std::string& email, const std::string& password);
 		bool LoginUser(const std::string& username, const std::string& password);
 		void LogoutUser();
+		bool LogIn(std::string& username, std::string& password);
 		
 
 
@@ -28,4 +28,7 @@ class Application
 		Store store;
 		Account* currentAccount;
 		User* currentUser;
+
+		std::string username;
+		std::string password;
 };

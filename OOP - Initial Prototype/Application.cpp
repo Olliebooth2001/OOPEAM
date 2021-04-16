@@ -1,5 +1,6 @@
 #include "Application.h"
 
+
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
 }
@@ -11,6 +12,38 @@ Application::~Application()
 		delete accounts[i];
 	}
 }
+bool Application::LogIn(std::string& username, std::string& password) {
+	
+	bool passFlag = false;
+	bool userFlag = false;
+	for (int i = 0; i < accounts.length(); i++) 
+	{
+		for (int a = 0; a < accounts[i]->users.length(); a++) 
+		{
+			if (accounts[i]->users[a]->GetUsername() == username) {
+				userFlag = true;
+			}
+		}
+		for (int a = 0; a < accounts[i]->users.length(); a++)
+		{
+			if (accounts[i]->users[a]->GetPassword() == password) {
+				passFlag = true;
+			}
+		}
+
+	}
+	if (passFlag == true && userFlag == true) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+
+
+
+}
+
 
 bool Application::IsUserLoggedIn() const
 {
@@ -40,7 +73,7 @@ Store& Application::GetStore()
 bool Application::LoginAccount(const std::string& email, const std::string& password)
 {
 	// TODO: This currently always logs you in as the first account
-	currentAccount = accounts[0]->item;
+	currentAccount = accounts[0];
 
 	return true;
 }
@@ -48,7 +81,7 @@ bool Application::LoginAccount(const std::string& email, const std::string& pass
 bool Application::LoginUser(const std::string& username, const std::string& password)
 {
 	// TODO: This currently always logs you in as the first user
-	currentUser = currentAccount->users[0]->item;
+	currentUser = currentAccount->users[0];
 
 	return true;
 }

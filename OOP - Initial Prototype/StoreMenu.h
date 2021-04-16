@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Menu.h"
-
+#include "GameMenu.h"
 #include <string>
 #include <vector>
 

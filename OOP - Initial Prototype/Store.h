@@ -9,6 +9,8 @@ class Store
 		Store();
 		~Store();
 		List<Game*>& getGames();
+		void addGame(Game* games);
+
 	private:
 		List<Game*> games;
 };

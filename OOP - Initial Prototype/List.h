@@ -54,7 +54,7 @@ public:
     ~List();                                 // destructor
     List<T>& operator = (const List<T>&);    // copy assignment operator
     bool operator == (const List<T>&) const; // compare with content of another list
-    Node<T>* operator[](int i);
+    T operator[](int i);
     bool isEmpty() const;                    // check if list is empty
     const T first() const;                   // return first item (MUST be non-empty)
     const T last() const;                    // return last item (MUST be non-empty)
@@ -84,13 +84,13 @@ List<T>::List() : head(nullptr)
 template <class T>
 //Node<T>* List<T>::GetItem(const int i) const
 
-Node<T>* List<T>:: operator [](int i) {
+T List<T>:: operator [](int i) {
     int counter = 0;
     for (Node<T>* pn = head; pn != nullptr; pn = pn->next)
     {
         
         if (counter == i) {
-            return pn;
+            return pn->item;
         }
         counter++;
     }

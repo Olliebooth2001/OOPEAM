@@ -12,7 +12,6 @@
 // TODO: Remove from global scope once menu system is integrated
 Application app;
 
-
 void createHardcodedTestData()
 {		
 	// Setup store with some games
@@ -32,18 +31,18 @@ void createHardcodedTestData()
 	Player* u3 = new Player("Charlie", "password", Date(2018,9,24));
 
 	// With some games in their library
-	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]->item));
+	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]));
 	//u1->library[1] = new LibraryItem("2018-06-18", app.GetStore().games.first());
-	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]->item));
+	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
-	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]->item));
+	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]));
 	//u3->library[1] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
 	// Make an account and attach the users
 	app.accounts.addInFront( new Account("alice@shu.com", "password", Date(2018,06,16)));
-	app.accounts[0]->item->users.addInFront(u1);
-	app.accounts[0]->item->users.addInFront(u2);
-	app.accounts[0]->item->users.addInFront(u3);
+	app.accounts[0]->users.addInFront(u1);
+	app.accounts[0]->users.addInFront(u2);
+	app.accounts[0]->users.addInFront(u3);
 
 	// TODO: We need a login menu for accounts, for now we log in the only account
 	app.LoginAccount("alice@shu.ac.uk", "password");
@@ -87,7 +86,7 @@ char showStoreMenuAndGetUserChoice()
 	for (int i = 0; i < app.GetStore().getGames().length()-1; i++) // TODO: Hardcoded, change when using List<T>
 	{
 		//std::cout << "  " << (i + 1) << ") " << app.GetStore().games.GetItem(i)->item->GetName() << "\n";
-		std::cout << "  " << (i + 1) << ") " << app.GetStore().getGames()[i]->item->GetName() << "\n";
+		std::cout << "  " << (i + 1) << ") " << app.GetStore().getGames()[i]->GetName() << "\n";
 	}
 
 	// TODO: Implement search store option
@@ -112,7 +111,7 @@ char showLoginUserMenuAndGetUserChoice(Account *account)
 	// Output user list
 	for (int i = 0; i < 3; i++) // TODO: Hardcoded, change when using List<T>
 	{
-		std::cout << "  " << (i + 1) << ") " << account->users[i]->item->GetUsername() << "\n";
+		std::cout << "  " << (i + 1) << ") " << account->users[i]->GetUsername() << "\n";
 	}
 
 	// Output rest of menu
@@ -189,7 +188,7 @@ void storeMenu()
 
 				if (index >= 0 && index < 9) // TODO: Hardcoded numbers, change when using List<T>
 				{
-					gameMenu(app.GetStore().getGames()[index]->item);
+					gameMenu(app.GetStore().getGames()[index]);
 				}
 			} break;
 		}
@@ -214,7 +213,7 @@ void loginUserMenu()
 
 				if (index >= 0 && index < 3) // TODO: Hardcoded numbers, change when using List<T>
 				{
-					std::string username = app.GetCurrentAccount()->users[index]->item->GetUsername();
+					std::string username = app.GetCurrentAccount()->users[index]->GetUsername();
 
 					std::cout << "  Enter password for " << username << ": ";
 					if (app.LoginUser(username, Utils::getLineFromUser()))

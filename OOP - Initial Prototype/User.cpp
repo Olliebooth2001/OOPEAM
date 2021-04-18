@@ -18,3 +18,4 @@ const std::string& User::GetPassword() const
 {
 	return password;
 }
+

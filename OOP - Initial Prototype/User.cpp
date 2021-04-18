@@ -29,3 +29,18 @@ void User::AddCredit(int amount)
 	credit = credit + amount;
 }
 
+bool User::EnoughCredit(int amount)
+{
+	if (credit < amount) return true;
+
+	return false;
+}
+
+void User::BuyGame(int amount)
+{
+	if (EnoughCredit(amount)) {
+		credit = credit - amount;
+	}
+
+}
+

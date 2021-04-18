@@ -12,6 +12,8 @@ class User
 		const std::string& GetPassword() const;
 		const int GetCredit() const;
 		void AddCredit(int amount);
+		bool EnoughCredit(int amount);
+		void BuyGame(int amount);
 
 	private:
 		std::string username;

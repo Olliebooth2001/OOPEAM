@@ -83,6 +83,7 @@ bool LoginUserMenu::HandleChoice(char choice)
 			// notice the if - this only works if somebody is logged in
 		}
 	} break;
+
 	}
 
 	return false;

@@ -12,6 +12,7 @@ void MainMenu::OutputOptions()
 	if (app->IsUserLoggedIn())
 	{
 		Option('P', "View " + app->GetCurrentUser()->GetUsername() +"'s"+" Profile");
+		Option('C', "Buy Credit");
 		Option('L', "Logout from " + app->GetCurrentUser()->GetUsername()+"'s Account");
 	}
 	else
@@ -49,6 +50,7 @@ bool MainMenu::HandleChoice(char choice)
 			
 		}
 	} break;
+
 	case 'P':
 	{
 		if (app->IsUserLoggedIn())
@@ -58,7 +60,16 @@ bool MainMenu::HandleChoice(char choice)
 			// notice the if - this only works if somebody is logged in
 		}
 	} break;
+
+	case 'C':
+	{
+		if (app->IsUserLoggedIn())
+		{
+			CreditMenu("Credit", app);
+		}
+	} break;
 	}
 
 	return false;
 }
+

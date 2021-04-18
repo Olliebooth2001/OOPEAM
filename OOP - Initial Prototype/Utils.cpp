@@ -11,3 +11,11 @@ char Utils::getCharFromUser()
 {
     return toupper(getLineFromUser()[0]);
 }
+
+void Utils::openfile()
+{
+}
+
+void Utils::savefile()
+{
+}

@@ -14,16 +14,35 @@ Application app;
 
 void createHardcodedTestData()
 {		
+	Utils utils;
+	List<Game> fileData = utils.ReadFromFile("Data.txt");
+
+	
+	for (int i = 0; i < fileData.length(); i++)
+	{
+		app.GetStore().getGames().addAtEnd(new Game
+		(
+			fileData[i].GetName(),
+			fileData[i].GetDescription(),
+			fileData[i].GetCost(),
+			fileData[i].GetRating(),
+			fileData[i].GetID())
+		);
+	}
+	
+
+	/*
 	// Setup store with some games
-	app.GetStore().getGames().addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
-	app.GetStore().getGames().addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15));
-	app.GetStore().getGames().addAtEnd(new Game("Factorio", "Build a complicated factory in space.", 1599, 12));
-	app.GetStore().getGames().addAtEnd(new Game("LIMBO", "Watch out for that spider.", 299, 12));
-	app.GetStore().getGames().addAtEnd(new Game("INSIDE", "What are those scientists even doing?!", 1299, 15));
-	app.GetStore().getGames().addAtEnd(new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15));
-	app.GetStore().getGames().addAtEnd(new Game("Half Life 3", "It's never coming out.", 5999, 18));
-	app.GetStore().getGames().addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18));
-	app.GetStore().getGames().addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15));
+	app.GetStore().getGames().addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5, 0));
+	app.GetStore().getGames().addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15, 1));
+	app.GetStore().getGames().addAtEnd(new Game("Factorio", "Build a complicated factory in space.", 1599, 12, 2));
+	app.GetStore().getGames().addAtEnd(new Game("LIMBO", "Watch out for that spider.", 299, 12, 3));
+	app.GetStore().getGames().addAtEnd(new Game("INSIDE", "What are those scientists even doing?!", 1299, 15, 4));
+	app.GetStore().getGames().addAtEnd(new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15, 5));
+	app.GetStore().getGames().addAtEnd(new Game("Half Life 3", "It's never coming out.", 5999, 18, 6));
+	app.GetStore().getGames().addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18, 7));
+	app.GetStore().getGames().addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15, 8));
+	*/
 
 	// Create some users
 	Player* u1 = new Admin("Alice", "password", Date(2018, 06, 16), 50);

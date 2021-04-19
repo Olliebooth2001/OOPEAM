@@ -9,15 +9,32 @@ void MainMenu::OutputOptions()
 {
 	Option('S', "Browse Store");
 
-	if (app->IsUserLoggedIn())
+	
+	if(app->IsAccountLoggedIn())
 	{
-		Option('P', "View " + app->GetCurrentUser()->GetUsername() +"'s"+" Profile");
-		Option('L', "Logout from " + app->GetCurrentUser()->GetUsername()+"'s Account");
+		if (app->IsUserLoggedIn())
+		{
+			Option('P', "View " + app->GetCurrentUser()->GetUsername() + "'s" + " Profile");
+			Option('L', "Logout from " + app->GetCurrentUser()->GetUsername() + "'s Account");
+		}
+		else
+		{
+			Option('L', "Login User");
+		}
 	}
 	else
 	{
-		Option('L', "Login");
+		if (app->IsAccountLoggedIn())
+		{
+			Option('A', "Logout Account");
+		}
+		else
+		{
+			Option('A', "Login Account");
+		}
+		
 	}
+	
 }
 
 bool MainMenu::HandleChoice(char choice)
@@ -58,6 +75,48 @@ bool MainMenu::HandleChoice(char choice)
 			// notice the if - this only works if somebody is logged in
 		}
 	} break;
+	case 'A':
+	{
+		if (app->IsAccountLoggedIn())
+		{
+			std::string answer = Question("Are you sure?");
+			if (answer == "y" || answer == "Y")
+			{
+				app->LogoutAccout();
+			}
+		}
+		else
+		{
+			//encapsulate
+			int count = 0;
+			for (int i = 0; i < app->accounts.length(); i++) 
+			{
+				count++;
+
+				Option(count, app->accounts[i]->getEmail());
+			}
+
+			std::string selectedAccount = Question("Please select account");
+
+			int int_1 = stoi(selectedAccount);
+			int_1--;
+			std::string username;
+
+			while (true) {
+				std::string tempPassword = Question("Please enter password");
+				int tempUsername = int_1;
+
+				if (app->LoginAccount(tempPassword, int_1)) 
+				{
+					app->LoginAccount(int_1);
+					MainMenu("MAIN MENU", app);
+					break;
+				}
+			}
+
+		}
+
+	}
 	}
 
 	return false;

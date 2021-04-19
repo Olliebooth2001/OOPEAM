@@ -12,6 +12,12 @@ public:
 	~Account();
 	List <User*> getUsers();
 	void addUser(User* user);
+
+	std::string getEmail();
+	
+
+	std::string getPassword();
+	
 	
 
 

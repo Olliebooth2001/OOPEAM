@@ -16,8 +16,8 @@ class User
 		void AddCredit(int amount);
 		bool EnoughCredit(int amount);
 		void BuyGame(int amount);
-		virtual List<LibraryItem*> GetLibrary();
-		virtual void AddLibraryItem(Game* game);
+		virtual List<LibraryItem*>& GetLibrary();
+		virtual void AddLibraryItem(Date dt, Game*& game);
 	private:
 		std::string username;
 		std::string password;

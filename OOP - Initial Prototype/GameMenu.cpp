@@ -8,14 +8,18 @@ GameMenu::GameMenu(const std::string& title, Application* app, Game* game) : Men
 
 
 void GameMenu::OutputOptions()  {
+	bool flag = false;
 	Line(game->GetDescription()) ;
 	Line(std::to_string(game->GetCost()));
 	
 	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
-		if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() != game)
+		if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)
 		{
-			Option('D', "Purchase");
+			flag = true;
 		}
+	}
+	if (flag == false) {
+		Option('D', "Buy Game");
 	}
 }
 
@@ -24,7 +28,12 @@ bool GameMenu::HandleChoice(char choice) {
 	{
 	case 'D':
 	{
-		app->GetCurrentUser()->AddLibraryItem(game);
+		if (app->GetCurrentUser()->EnoughCredit(game->GetCost())) {
+			app->GetCurrentUser()->BuyGame(game->GetCost());
+			Date dt = Date();
+			dt.GetCurrentDate();
+			app->GetCurrentUser()->AddLibraryItem(dt, game);
+		}
 	} break;
 	}
 	return true;

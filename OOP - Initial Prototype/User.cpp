@@ -31,7 +31,7 @@ void User::AddCredit(int amount)
 
 bool User::EnoughCredit(int amount)
 {
-	if (credit < amount) return true;
+	if (credit >= amount) return true;
 
 	return false;
 }
@@ -44,9 +44,10 @@ void User::BuyGame(int amount)
 
 }
 
-List<LibraryItem*> User::GetLibrary() {
+List<LibraryItem*>& User::GetLibrary() {
 	return List<LibraryItem*>();
 }
 
-void User::AddLibraryItem(Game* game) {
+void User::AddLibraryItem(Date date, Game*& game) {
 }
+

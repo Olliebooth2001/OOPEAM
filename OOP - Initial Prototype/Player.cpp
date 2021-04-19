@@ -13,14 +13,12 @@ Player::~Player()
 	}
 }
 
-List<LibraryItem*> Player::GetLibrary()
+List<LibraryItem*>& Player::GetLibrary()
 {
-	return List<LibraryItem*>();
+	return library;
 }
 
-void Player::AddToLibrary(Game* game)
+void Player::AddLibraryItem(Date date,Game*& game)
 {
-	Date dt = Date();
-	dt.GetCurrentDate();
-	library.addAtEnd(new LibraryItem(dt ,game));
+	library.addAtEnd(new LibraryItem(date, game));
 }

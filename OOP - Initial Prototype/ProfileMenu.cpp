@@ -12,7 +12,6 @@ void ProfileMenu::OutputOptions()
 	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
 		Line(i + " " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName());
 	}
-	if (app->GetCurrentUser().)
 	
 }
 

@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include <string>
 #include "User.h"
+#include "Admin.h"
 
 class ProfileMenu : public Menu
 {

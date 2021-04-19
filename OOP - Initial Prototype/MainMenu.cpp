@@ -15,6 +15,8 @@ void MainMenu::OutputOptions()
 		if (app->IsUserLoggedIn())
 		{
 			Option('P', "View " + app->GetCurrentUser()->GetUsername() + "'s" + " Profile");
+			Option('C', "Buy Credit");
+			Option('F', "Search Store");
 			Option('L', "Logout from " + app->GetCurrentUser()->GetUsername() + "'s Account");
 		}
 		else

@@ -44,7 +44,7 @@ void createHardcodedTestData()
 	app.accounts[0]->addUser(u3);
 
 	// TODO: We need a login menu for accounts, for now we log in the only account
-	app.LoginAccount("alice@shu.ac.uk", "password");
+	//app.LoginAccount("alice@shu.ac.uk", "password");
 }
 
 char showMainMenuAndGetUserChoice()

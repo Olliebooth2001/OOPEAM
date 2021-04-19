@@ -155,6 +155,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="LibraryItem.cpp" />
+    <ClCompile Include="LoginAccountMenu.cpp" />
     <ClCompile Include="LoginUserMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="LibraryItem.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="LoginAccountMenu.h" />
     <ClInclude Include="LoginUserMenu.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />

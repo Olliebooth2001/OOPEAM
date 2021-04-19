@@ -20,15 +20,12 @@ void MainMenu::OutputOptions()
 		else
 		{
 			Option('L', "Login User");
+			Option('A', "Logout Account");
 		}
 	}
 	else
 	{
-		if (app->IsAccountLoggedIn())
-		{
-			Option('A', "Logout Account");
-		}
-		else
+		
 		{
 			Option('A', "Login Account");
 		}

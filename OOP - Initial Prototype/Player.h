@@ -10,8 +10,8 @@ class Player : public User
 	public:
 		Player(const std::string&, const std::string&, const Date&, int);
 		~Player();
-
-
+		List<LibraryItem*> GetLibrary();
+		void AddToLibrary(Game* game);
 		List<LibraryItem*> library; 
 		
 

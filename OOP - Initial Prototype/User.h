@@ -2,6 +2,8 @@
 
 #include <string>
 #include "Date.h"
+#include "List.h"
+#include "LibraryItem.h"
 
 class User
 {
@@ -14,7 +16,8 @@ class User
 		void AddCredit(int amount);
 		bool EnoughCredit(int amount);
 		void BuyGame(int amount);
-
+		virtual List<LibraryItem*> GetLibrary();
+		virtual void AddLibraryItem(Game* game);
 	private:
 		std::string username;
 		std::string password;

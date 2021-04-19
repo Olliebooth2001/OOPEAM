@@ -44,3 +44,9 @@ void User::BuyGame(int amount)
 
 }
 
+List<LibraryItem*> User::GetLibrary() {
+	return List<LibraryItem*>();
+}
+
+void User::AddLibraryItem(Game* game) {
+}

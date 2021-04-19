@@ -21,3 +21,13 @@ void Account::addUser(User* user)
 {
 	users.addAtEnd(user);
 }
+
+std::string Account::getEmail()
+{
+	return email;
+}
+
+std::string Account::getPassword()
+{
+	return password;
+}

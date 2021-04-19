@@ -9,17 +9,31 @@ void MainMenu::OutputOptions()
 {
 	Option('S', "Browse Store");
 
-	if (app->IsUserLoggedIn())
+	
+	if(app->IsAccountLoggedIn())
 	{
-		Option('P', "View " + app->GetCurrentUser()->GetUsername() +"'s"+" Profile");
-		Option('C', "Buy Credit");
-		Option('F', "Search Store");
-		Option('L', "Logout from " + app->GetCurrentUser()->GetUsername()+"'s Account");
+		if (app->IsUserLoggedIn())
+		{
+			Option('P', "View " + app->GetCurrentUser()->GetUsername() + "'s" + " Profile");
+			Option('C', "Buy Credit");
+			Option('F', "Search Store");
+			Option('L', "Logout from " + app->GetCurrentUser()->GetUsername() + "'s Account");
+		}
+		else
+		{
+			Option('L', "Login User");
+			Option('A', "Logout Account");
+		}
 	}
 	else
 	{
-		Option('L', "Login");
+		
+		{
+			Option('A', "Login Account");
+		}
+		
 	}
+	
 }
 
 bool MainMenu::HandleChoice(char choice)
@@ -44,10 +58,12 @@ bool MainMenu::HandleChoice(char choice)
 		else
 		{
 			
-			// this would need to go to a LoginMenu - similar to StoreMenu
-			// instead we just set logged in to true on the main app object
+			if (app->IsAccountLoggedIn())
+			{
+				LoginUserMenu("LOGIN USER MENU", app);
+			}
 		
-			LoginUserMenu("LOGIN USER MENU",app);
+			
 			
 		}
 	} break;
@@ -87,14 +103,48 @@ bool MainMenu::HandleChoice(char choice)
 			// notice the if - this only works if somebody is logged in
 		}
 	} break;
-
-	case 'C':
+	case 'A':
 	{
-		if (app->IsUserLoggedIn())
+		if (app->IsAccountLoggedIn())
 		{
-			CreditMenu("Credit", app);
+			std::string answer = Question("Are you sure?");
+			if (answer == "y" || answer == "Y")
+			{
+				app->LogoutAccout();
+			}
 		}
-	} break;
+		else
+		{
+			//encapsulate
+			int count = 0;
+			for (int i = 0; i < app->accounts.length(); i++) 
+			{
+				count++;
+
+				Option(count, app->accounts[i]->getEmail());
+			}
+
+			std::string selectedAccount = Question("Please select account");
+
+			int int_1 = stoi(selectedAccount);
+			int_1--;
+			std::string username;
+
+			while (true) {
+				std::string tempPassword = Question("Please enter password");
+				int tempUsername = int_1;
+
+				if (app->LoginAccount(tempPassword, int_1)) 
+				{
+					app->LoginAccount(int_1);
+					MainMenu("MAIN MENU", app);
+					break;
+				}
+			}
+
+		}
+
+	}
 	}
 
 	return false;

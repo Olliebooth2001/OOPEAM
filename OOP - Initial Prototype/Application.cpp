@@ -70,23 +70,47 @@ Store& Application::GetStore()
 	return store;
 }
 
-bool Application::LoginAccount(const std::string& email, const std::string& password)
+void Application::LoginAccount(int i)
 {
 	// TODO: This currently always logs you in as the first account
-	currentAccount = accounts[0];
+	currentAccount = accounts[i];
 
-	return true;
+	
+}
+
+bool Application::LoginAccount(const std::string& password, int index)
+{
+	
+	
+	if (accounts[index]->getPassword() == password)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 bool Application::LoginUser(int i)
 {
-	// TODO: This currently always logs you in as the first user
-	currentUser = currentAccount->getUsers()[i];
-
-	return true;
+	if (currentUser = currentAccount->getUsers()[i])
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
 }
 
 void Application::LogoutUser()
 {
 	currentUser = nullptr;
+}
+
+void Application::LogoutAccout()
+{
+	currentAccount = nullptr;
 }

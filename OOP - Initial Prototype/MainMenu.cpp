@@ -63,6 +63,33 @@ bool MainMenu::HandleChoice(char choice)
 			
 		}
 	} break;
+	case 'F':
+	{
+		system("CLS");
+
+
+		Line("To search for a title press T, to select a price range press P");
+		Option('T', "Title");
+		Option('P', "Price Range");
+		std::string answer = Question("Select");
+
+		if (answer == "T" || answer == "t") {
+			std::string ans2 = Question("Enter Title Name");
+			StoreMenu("STORE", app, app->GetStore().searchByName(ans2));
+		}
+		else if (answer == "P" || answer == "p")
+		{
+
+			Option('1', "0-1000");
+			Option('2', "1000-2000");
+			Option('3', "Over 2000");
+			std::string ans = Question("Select Price Range");
+
+			int iResponse = stoi(ans);
+			StoreMenu("STORE", app, app->GetStore().searchByPriceRange(iResponse));
+		}
+	} break;
+
 	case 'P':
 	{
 		if (app->IsUserLoggedIn())
@@ -118,3 +145,4 @@ bool MainMenu::HandleChoice(char choice)
 
 	return false;
 }
+

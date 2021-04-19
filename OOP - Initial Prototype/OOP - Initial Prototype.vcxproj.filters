@@ -128,7 +128,7 @@
     <ClInclude Include="ProfileMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LoginAccountMenu.h">
+    <ClInclude Include="CreditMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

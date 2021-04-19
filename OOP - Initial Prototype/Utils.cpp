@@ -11,7 +11,20 @@ char Utils::getCharFromUser()
 {
     return toupper(getLineFromUser()[0]);
 }
+bool Utils::StartsWith(std::string fullText, std::string searchText) {
 
+    int letters = searchText.length();
+
+    std::string newString = fullText.substr(0, letters);
+
+    if (std::tolower(newString == searchText)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
 void Utils::openfile()
 {
 }

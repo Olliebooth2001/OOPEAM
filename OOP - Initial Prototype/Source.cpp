@@ -26,9 +26,9 @@ void createHardcodedTestData()
 	app.GetStore().getGames().addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15));
 
 	// Create some users
-	Player* u1 = new Admin("Alice", "password", Date(2018, 06, 16));
-	Player* u2 = new Player("Bob", "password", Date(2018,9,19));
-	Player* u3 = new Player("Charlie", "password", Date(2018,9,24));
+	Player* u1 = new Admin("Alice", "password", Date(2018, 06, 16), 50);
+	Player* u2 = new Player("Bob", "password", Date(2018,9,19), 10);
+	Player* u3 = new Player("Charlie", "password", Date(2018,9,24), 20);
 
 	// With some games in their library
 	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]));

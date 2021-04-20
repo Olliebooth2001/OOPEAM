@@ -19,6 +19,12 @@
     <Filter Include="Source Files\User">
       <UniqueIdentifier>{eb2ce069-f216-4bb9-b2c5-e1a1fcdc69d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Menus">
+      <UniqueIdentifier>{541854db-66b0-4f9e-a5da-4c75d8bb2b66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus">
+      <UniqueIdentifier>{e0f93cf6-8230-4d5e-9464-96effe8673e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -54,26 +60,29 @@
     <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StoreMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginUserMenu.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CreditMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
     <ClCompile Include="GameMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProfileMenu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
     <ClCompile Include="LoginAccountMenu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginUserMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,26 +119,29 @@
     <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StoreMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginUserMenu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CreditMenu.h">
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
     <ClInclude Include="GameMenu.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginAccountMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginUserMenu.h">
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
     <ClInclude Include="ProfileMenu.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="CreditMenu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreMenu.h">
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

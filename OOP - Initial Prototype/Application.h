@@ -3,6 +3,7 @@
 #include "Account.h"
 #include "User.h"
 #include "Store.h"
+#include <algorithm>
 class Application
 {
 	public:

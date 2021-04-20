@@ -10,7 +10,7 @@ Date::Date(int day, int month, int year)
 }
 Date::Date() {}
 
-void Date::GetCurrentDate() {
+Date Date::GetCurrentDate() {
 
     struct tm newtime;
     time_t now = time(0);
@@ -18,6 +18,8 @@ void Date::GetCurrentDate() {
     int Month = 1 + newtime.tm_mon;
     int Day = newtime.tm_mday;
     int Year = newtime.tm_year - 100;
+    Date date = Date(Day, Month, Year);
+    return date;
     //std::cout << Day << " / " << Month << " / " << Year;
 }
 std::string Date::GetDate() {

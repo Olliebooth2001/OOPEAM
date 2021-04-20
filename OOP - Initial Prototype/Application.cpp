@@ -16,6 +16,8 @@ bool Application::LogIn(std::string& username, std::string& password) {
 	
 	bool passFlag = false;
 	bool userFlag = false;
+
+
 	for (int i = 0; i < accounts.length(); i++) 
 	{
 		for (int a = 0; a < accounts[i]->getUsers().length(); a++) 

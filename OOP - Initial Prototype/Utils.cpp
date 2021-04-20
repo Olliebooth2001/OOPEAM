@@ -197,7 +197,8 @@ List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
                             player.library.addInFront(&tmpLibraryItem);
                         }
 
-                            account.getUsers().addInFront(&player);
+                            //account.getUsers().addInFront(&player);
+                            account.addUser(&player);
                         }
                     }
                 

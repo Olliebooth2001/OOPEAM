@@ -51,3 +51,8 @@ List<LibraryItem*>& User::GetLibrary() {
 void User::AddLibraryItem(Date date, Game*& game) {
 }
 
+bool User::HasPermissions()
+{
+	return false;
+}
+

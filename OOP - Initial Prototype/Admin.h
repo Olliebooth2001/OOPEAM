@@ -8,4 +8,5 @@ class Admin : public Player
 	public:
 		Admin(const std::string&, const std::string&, const Date&, int);
 		~Admin();
+		bool HasPermissions() override;
 };

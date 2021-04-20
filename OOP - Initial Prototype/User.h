@@ -18,6 +18,7 @@ class User
 		void BuyGame(int amount);
 		virtual List<LibraryItem*>& GetLibrary();
 		virtual void AddLibraryItem(Date dt, Game*& game);
+		virtual bool HasPermissions();
 
 	private:
 		std::string username;

@@ -18,7 +18,7 @@ void Date::GetCurrentDate() {
     int Month = 1 + newtime.tm_mon;
     int Day = newtime.tm_mday;
     int Year = newtime.tm_year - 100;
-    std::cout << Day << " / " << Month << " / " << Year;
+    //std::cout << Day << " / " << Month << " / " << Year;
 }
 std::string Date::GetDate() {
 

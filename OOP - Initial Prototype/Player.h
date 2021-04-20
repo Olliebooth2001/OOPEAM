@@ -13,7 +13,6 @@ class Player : public User
 		List<LibraryItem*>& GetLibrary() override;
 		void AddLibraryItem(Date date, Game*& game) override;
 		List<LibraryItem*> library; 
-		
 	private:
 
 };

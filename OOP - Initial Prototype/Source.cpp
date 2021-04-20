@@ -265,4 +265,8 @@ void main()
 	//mainMenu(); // TODO: replace with proper menu system
 
 	// TODO: app.Save();
+
+
+	//TODO: Recursion
+	//TODO: Tidy up Loops to use auto.
 }

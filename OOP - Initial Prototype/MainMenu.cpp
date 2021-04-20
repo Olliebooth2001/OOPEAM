@@ -98,6 +98,7 @@ bool MainMenu::HandleChoice(char choice)
 	{
 		if (app->IsUserLoggedIn())
 		{
+			ProfileMenu(app->GetCurrentUser()->GetUsername(), app);
 			//BlockingMessage("Not implemented, press return to continue");
 			// this needs to go to a profile page - similar to StoreMenu
 			// notice the if - this only works if somebody is logged in
@@ -145,6 +146,12 @@ bool MainMenu::HandleChoice(char choice)
 		}
 
 	}
+	case 'C':
+	{
+		if (app->IsUserLoggedIn()) {
+			CreditMenu("Credit", app);
+		}
+	}break;
 	}
 
 	return false;

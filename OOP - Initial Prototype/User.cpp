@@ -29,3 +29,8 @@ void User::AddCredit(int amount)
 	credit = credit + amount;
 }
 
+const Date User::GetDate() const
+{
+	return created;
+}
+

@@ -12,6 +12,7 @@ class User
 		const std::string& GetPassword() const;
 		const int GetCredit() const;
 		void AddCredit(int amount);
+		const Date GetDate() const;
 
 	private:
 		std::string username;

@@ -30,7 +30,6 @@ bool ProfileMenu::HandleChoice(char choice)
 		dt.GetCurrentDate();
 		Player* p1 = new Player(tempusername, temppassword, dt, 0);
 		app->GetCurrentAccount()->addUser(p1);
-		Line("Test");
 	} break;
 	case 'D': {
 		int count = 0;

@@ -11,6 +11,7 @@
 #include <random>
 #include <string>
 #include <iomanip>
+#include <algorithm> 
 //#include "Application.h"
 
 class Utils
@@ -31,6 +32,9 @@ private:
 
     // TODO: 2 versions of ToUpper
     int RandomInt;
+    static std::string ToUpper(std::string input);
+    static std::string ToUpperRecursive(std::string input);
+    std::string input;
     std::string fullText;
     std::string searchText;
 

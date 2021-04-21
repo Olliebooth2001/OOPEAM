@@ -142,7 +142,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
 
 
 
-                        account->getUsers().addInFront(admin);
+                        account->addUser(admin);
                     }
                     else if (line == "ACCOUNT-PLAYER")
                     {
@@ -182,7 +182,6 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-
                             LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
                             player->library.addInFront(tmpLibraryItem);
                         }

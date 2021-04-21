@@ -7,13 +7,13 @@ Player::Player(const std::string& username, const std::string& password, const D
 
 Player::~Player()
 {
-	for (int i = 0; i < library.length(); ++i)
+	for (int i = 0; i < library.size(); ++i)
 	{
 		delete library[i];
 	}
 }
 
-List<LibraryItem*>& Player::GetLibrary()
+std::vector<LibraryItem*>& Player::GetLibrary()
 {
 	return library;
 }

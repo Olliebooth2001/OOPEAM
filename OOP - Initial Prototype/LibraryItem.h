@@ -9,6 +9,8 @@ class LibraryItem
 		LibraryItem(const Date&, Game*);
 		~LibraryItem();
 		const Game* GetLibraryGame();
+		int GetGameTime();
+		void AddGameTime(int time);
 	private:
 		const Game *game;
 		const Date purchased;  

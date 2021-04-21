@@ -12,6 +12,7 @@ void ProfileMenu::OutputOptions()
 	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
 		Line(i + " " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName());
 	}
+	Option('P', "Play Games");
 	if (app->GetCurrentUser()->HasPermissions()) {
 		Option('A', "Add User");
 		Option('D', "Delete User");
@@ -30,6 +31,27 @@ bool ProfileMenu::HandleChoice(char choice)
 		Player* p1 = new Player(tempusername, temppassword, dt, 0);
 		app->GetCurrentAccount()->addUser(p1);
 	} break;
+	case 'P': {
+		int count = 0;
+		for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
+			count++;
+
+			Option(count, app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName());
+		}
+		while (true) {
+			std::string gameChoice = Question("Select A Game");
+			int int_2 = stoi(gameChoice);
+			int_2--;
+			if (int_2 <= app->GetCurrentUser()->GetLibrary().length()) {
+				//AddGameTime();
+				break;
+			}
+			else if (gameChoice == "B" || gameChoice == "b") {
+				break;
+			}
+		}
+		
+	}
 	case 'D': {
 		int count = 0;
 		for (int i = 0; i < app->GetCurrentAccount()->getUsers().length(); i++) {

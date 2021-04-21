@@ -94,8 +94,8 @@ T List<T>:: operator [](int i) {
         }
         counter++;
     }
-    return NULL;
 
+    //return NULL;      // REMOVED TO READ FROM FILE.
 }
 
 

@@ -8,27 +8,59 @@
 #include "Utils.h"
 #include "Date.h"
 #include "MainMenu.h"
+#include "fileHandler.h"
 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
+fileHandler handler;
 
 void createHardcodedTestData()
-{		
-	// Setup store with some games
-	app.GetStore().getGames().addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5));
-	app.GetStore().getGames().addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15));
-	app.GetStore().getGames().addAtEnd(new Game("Factorio", "Build a complicated factory in space.", 1599, 12));
-	app.GetStore().getGames().addAtEnd(new Game("LIMBO", "Watch out for that spider.", 299, 12));
-	app.GetStore().getGames().addAtEnd(new Game("INSIDE", "What are those scientists even doing?!", 1299, 15));
-	app.GetStore().getGames().addAtEnd(new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15));
-	app.GetStore().getGames().addAtEnd(new Game("Half Life 3", "It's never coming out.", 5999, 18));
-	app.GetStore().getGames().addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18));
-	app.GetStore().getGames().addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15));
+{	
+	
+	
 
-	// Create some users
-	Player* u1 = new Admin("Alice", "password", Date(16, 06, 2018), 50);
-	Player* u2 = new Player("Bob", "password", Date(19,9,2018), 10);
-	Player* u3 = new Player("Charlie", "password", Date(24,9,2018), 20);
+	/*
+	// Setup store with some games
+	app.GetStore().getGames().addAtEnd(new Game("The Witness", "Explore a nice island and solve puzzles.", 2999, 5, 0));
+	app.GetStore().getGames().addAtEnd(new Game("Braid", "A time twisting puzzle game.", 499, 15, 1));
+	app.GetStore().getGames().addAtEnd(new Game("Factorio", "Build a complicated factory in space.", 1599, 12, 2));
+	app.GetStore().getGames().addAtEnd(new Game("LIMBO", "Watch out for that spider.", 299, 12, 3));
+	app.GetStore().getGames().addAtEnd(new Game("INSIDE", "What are those scientists even doing?!", 1299, 15, 4));
+	app.GetStore().getGames().addAtEnd(new Game("Portal 2", "Play around with physics. Shoot the moon.", 1999, 15, 5));
+	app.GetStore().getGames().addAtEnd(new Game("Half Life 3", "It's never coming out.", 5999, 18, 6));
+	app.GetStore().getGames().addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18, 7));
+	app.GetStore().getGames().addAtEnd(new Game("Path", "Draw nice shapes between 2 big dots.", 299, 15, 8));
+	*/
+
+	/*
+	List<Admin> AccountAdminData = utils.ReadAccountAdminDataFromFile("Data.txt");
+
+
+
+	// data from the file.
+	List<User> AccountPlayerData = utils.ReadAccountPlayerDataFromFile("Data.txt");
+
+	// Application AccountPlayers.
+	List<User*> AccountPlayers;
+
+	for (int i = 0; i < AccountPlayerData.length(); i++)
+	{
+		Player* tmp = new Player
+		(
+			AccountPlayerData[i].GetUsername(), 
+			AccountPlayerData[i].GetPassword(), 
+			AccountPlayerData[i].GetDate(), 
+			AccountPlayerData[i].GetCredit()
+		);
+	}
+	*/
+
+	
+
+	// Create some users (Account-Players).
+	Player* u1 = new Admin("Alice", "password", Date(2018, 06, 16), 50);
+	Player* u2 = new Player("Bob", "password", Date(2018,9,19), 10);
+	Player* u3 = new Player("Charlie", "password", Date(2018,9,24), 20);
 
 	// With some games in their library
 	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]));
@@ -36,6 +68,7 @@ void createHardcodedTestData()
 	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
 	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]));
+
 
 	// Make an account and attach the users
 	app.accounts.addInFront( new Account("alice@shu.com", "password", Date(2018,06,16)));
@@ -258,7 +291,29 @@ void mainMenu()
 void main()
 {
 	// TODO: Remove call to dummy data, instead use Load and Save
-	createHardcodedTestData();
+	//createHardcodedTestData();
+
+	List<Game> GameData = handler.ReadGameDataFromFile("Data.txt");
+
+	for (int i = 0; i < GameData.length(); i++)
+	{
+		app.GetStore().getGames().addAtEnd(new Game
+		(
+			GameData[i].GetName(),
+			GameData[i].GetDescription(),
+			GameData[i].GetCost(),
+			GameData[i].GetRating(),
+			GameData[i].GetID())
+		);
+	}
+
+	List<Account*> accounts = handler.ProcessFileData(app, "Data.txt");
+
+	for (int i = 0; i < accounts.length(); i++)
+	{
+		app.accounts.addAtEnd(accounts[i]);
+	}
+	
 
 	// TODO: app.Load();
 	MainMenu("MAIN MENU", &app);

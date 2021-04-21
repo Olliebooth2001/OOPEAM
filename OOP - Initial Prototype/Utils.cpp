@@ -1,5 +1,7 @@
 #include "Utils.h"
 
+
+
 std::string Utils::getLineFromUser()
 {
     std::string input;
@@ -11,6 +13,7 @@ char Utils::getCharFromUser()
 {
     return toupper(getLineFromUser()[0]);
 }
+
 
 bool Utils::StartsWith(std::string fullText, std::string searchText) {
 
@@ -26,16 +29,7 @@ bool Utils::StartsWith(std::string fullText, std::string searchText) {
     }
 
 }
-
-int Utils::getRandomPlayInt()
-{
-    return 0;
-}
-
 void Utils::openfile()
 {
 }
 
-void Utils::savefile()
-{
-}

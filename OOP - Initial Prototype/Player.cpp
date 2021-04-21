@@ -20,5 +20,5 @@ std::vector<LibraryItem*>& Player::GetLibrary()
 
 void Player::AddLibraryItem(Date date,Game*& game)
 {
-	library.push_back(new LibraryItem(date, game));
+	library.push_back(new LibraryItem(date, game, 0));
 }

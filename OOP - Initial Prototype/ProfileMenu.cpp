@@ -26,8 +26,7 @@ bool ProfileMenu::HandleChoice(char choice)
 	case 'A': {
 		std::string tempusername = Question("Enter New Username");
 		std::string temppassword = Question("Enter New Password");
-		Date dt = Date();
-		dt.GetCurrentDate();
+		Date dt = Date().GetCurrentDate();
 		Player* p1 = new Player(tempusername, temppassword, dt, 0);
 		app->GetCurrentAccount()->addUser(p1);
 	} break;

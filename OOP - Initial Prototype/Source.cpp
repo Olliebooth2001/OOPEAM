@@ -292,7 +292,9 @@ void main()
 {
 	// TODO: Remove call to dummy data, instead use Load and Save
 	//createHardcodedTestData();
-
+	Utils ut = Utils();
+	std::string ab = ut.FormatPlaytime(70);
+	std::cout << ab;
 	List<Game> GameData = handler.ReadGameDataFromFile("Data.txt");
 
 	for (int i = 0; i < GameData.length(); i++)

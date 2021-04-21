@@ -12,7 +12,6 @@ class Store
 		List<Game*> searchByPriceRange(int priceRange);
 		List<Game*>& getResults();
 		List<Game*> searchByName(std::string inputString);
-
 		List<Game*>& getGames();
 		void addGame(Game* games);
 

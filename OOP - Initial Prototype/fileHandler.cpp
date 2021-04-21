@@ -136,8 +136,8 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame);
-                            admin->library.push_back(tmpLibraryItem);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
+                            admin->library.addInFront(tmpLibraryItem);
                         }
 
 
@@ -182,9 +182,8 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame);
-                            player->library.push_back(tmpLibraryItem);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
+                            player->library.addInFront(tmpLibraryItem);
                         }
 
                         //account.getUsers().addInFront(&player);

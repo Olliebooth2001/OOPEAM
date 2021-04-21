@@ -23,7 +23,12 @@ private:
     List<Account*> ProcessFileData(Application& app, const std::string& dir);
 
     void savefile();
+    static bool StartsWith(std::string fullText, std::string searchText);
+
 
 
     // TODO: 2 versions of ToUpper
+    std::string fullText;
+    std::string searchText;
+
 };

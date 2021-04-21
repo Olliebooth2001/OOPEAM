@@ -21,3 +21,18 @@ void Account::addUser(User* user)
 {
 	users.addAtEnd(user);
 }
+
+void Account::DeleteUser(User* user)
+{
+	users.deleteOne(user);
+}
+
+std::string Account::getEmail()
+{
+	return email;
+}
+
+std::string Account::getPassword()
+{
+	return password;
+}

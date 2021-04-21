@@ -12,7 +12,7 @@ public:
 
 	void OutputOptions() final override;
 
-	bool HandleChoice(char choice) final;
+	bool HandleChoice(char choice) final override;
 	
 private:
 

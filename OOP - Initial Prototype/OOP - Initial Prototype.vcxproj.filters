@@ -72,7 +72,7 @@
     <ClCompile Include="ProfileMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreditMenu.cpp">
+    <ClCompile Include="LoginAccountMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -12,3 +12,13 @@ Player::~Player()
 		delete library[i];
 	}
 }
+
+List<LibraryItem*>& Player::GetLibrary()
+{
+	return library;
+}
+
+void Player::AddLibraryItem(Date date,Game*& game)
+{
+	library.addAtEnd(new LibraryItem(date, game));
+}

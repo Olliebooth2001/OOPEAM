@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #include <string>
 #include "Application.h"
 #include "Account.h"
@@ -67,7 +67,6 @@ void createHardcodedTestData()
 	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
 	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]));
-	//u3->library[1] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
 
 	// Make an account and attach the users
@@ -77,7 +76,7 @@ void createHardcodedTestData()
 	app.accounts[0]->addUser(u3);
 
 	// TODO: We need a login menu for accounts, for now we log in the only account
-	app.LoginAccount("alice@shu.ac.uk", "password");
+	//app.LoginAccount("alice@shu.ac.uk", "password");
 }
 
 char showMainMenuAndGetUserChoice()
@@ -320,4 +319,8 @@ void main()
 	//mainMenu(); // TODO: replace with proper menu system
 
 	// TODO: app.Save();
+
+
+	//TODO: Recursion
+	//TODO: Tidy up Loops to use auto.
 }

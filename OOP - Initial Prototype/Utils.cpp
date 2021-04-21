@@ -151,6 +151,9 @@ List<Account*> Utils::ProcessFileData(Application& app, const std::string& dir)
                             LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame);
                             admin->library.addInFront(tmpLibraryItem);
                         }
+bool Utils::StartsWith(std::string fullText, std::string searchText) {
+
+    int letters = searchText.length();
 
                         account->getUsers().addInFront(admin);
                     }
@@ -270,6 +273,18 @@ Date Utils::parseDate(const std::string& stringDate)
     }
 
     return Date(day, month, year);
+    std::string newString = fullText.substr(0, letters);
+
+    if (std::tolower(newString == searchText)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+void Utils::openfile()
+{
 }
 
 void Utils::savefile()

@@ -2,8 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include <ctime>
-#include <stdlib.h>
+#include <random>
 
 class Utils
 {

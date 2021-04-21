@@ -313,14 +313,14 @@ void main()
 	{
 		app.accounts.addAtEnd(accounts[i]);
 	}
-	
+	handler.saveToFile(app, "test.txt");
 
 	// TODO: app.Load();
 	MainMenu("MAIN MENU", &app);
 	//mainMenu(); // TODO: replace with proper menu system
 
 	// TODO: app.Save();
-
+	
 
 	//TODO: Recursion
 	//TODO: Tidy up Loops to use auto.

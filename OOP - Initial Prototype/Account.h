@@ -13,14 +13,11 @@ public:
 	List <User*> getUsers();
 	void addUser(User* user);
 	void DeleteUser(User* user);
+
 	std::string getEmail();
-	
-
 	std::string getPassword();
-	
-	
-
-
+	Date getDateCreated();
+	std::string getDateCreatedAsString();
 private:
 	List <User*> users;
 	std::string email;

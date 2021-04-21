@@ -16,7 +16,7 @@ public:
 	Date();
 
 
-	void GetCurrentDate();
+	Date GetCurrentDate();
 	std::string GetDate();
 
 private:

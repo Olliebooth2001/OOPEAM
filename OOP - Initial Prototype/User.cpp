@@ -56,3 +56,8 @@ bool User::HasPermissions()
 	return false;
 }
 
+const Date User::GetDate() const
+{
+	return created;
+}
+

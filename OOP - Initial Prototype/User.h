@@ -19,6 +19,7 @@ class User
 		virtual List<LibraryItem*>& GetLibrary();
 		virtual void AddLibraryItem(Date dt, Game*& game);
 		virtual bool HasPermissions();
+		const Date GetDate() const;
 
 	private:
 		std::string username;

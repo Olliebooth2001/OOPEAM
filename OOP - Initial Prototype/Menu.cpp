@@ -24,6 +24,14 @@ void Menu::Paint()
 		if (choice == 'B')
 		{
 			readyToGoBack = true;
+
+			while (app->GetStore().getResults().length() != 0) {
+
+				for (int i = 0; i < app->GetStore().getResults().length(); i++) {
+					app->GetStore().getResults().deleteFirst();
+
+				}
+			}
 		}
 		else
 		{

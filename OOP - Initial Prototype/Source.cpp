@@ -307,11 +307,11 @@ void main()
 		);
 	}
 
-	List<Account> accounts = utils.ProcessFileData(app, "Data.txt");
+	List<Account*> accounts = utils.ProcessFileData(app, "Data.txt");
 
 	for (int i = 0; i < accounts.length(); i++)
 	{
-		app.accounts.addAtEnd(&accounts[i]);
+		app.accounts.addAtEnd(accounts[i]);
 	}
 	
 

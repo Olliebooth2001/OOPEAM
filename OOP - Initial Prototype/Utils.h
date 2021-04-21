@@ -20,7 +20,7 @@ private:
     static char getCharFromUser();
 
     List<Game> ReadGameDataFromFile(const std::string& directory);
-    List<Account> ProcessFileData(Application& app, const std::string& dir);
+    List<Account*> ProcessFileData(Application& app, const std::string& dir);
 
     void savefile();
 

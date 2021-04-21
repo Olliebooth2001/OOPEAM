@@ -7,4 +7,5 @@ LibraryItem::LibraryItem(const Date& purchased, Game* game)
 
 LibraryItem::~LibraryItem()
 {
+
 }

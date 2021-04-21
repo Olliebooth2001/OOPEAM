@@ -78,12 +78,12 @@ List<Game> Utils::ReadGameDataFromFile(const std::string& directory)
 
 // account player, account admin, library item needs to be be in one function.
 
-List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
+List<Account*> Utils::ProcessFileData(Application& app, const std::string& dir)
 {
     // variables for processing data.
     int lineCounter = 0;
     std::string line;
-    List<Account> accounts;
+    List<Account*> accounts;
 
     // open file.
     std::ifstream file(dir, std::ios_base::app);
@@ -104,7 +104,7 @@ List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
                 std::string password = line;
 
 
-                Account account(email, password, dateCreated);
+                Account* account = new Account(email, password, dateCreated);
 
                 std::getline(file, line);
 
@@ -124,7 +124,7 @@ List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
                         std::getline(file, line);
                         int credits = std::stoi(line);      // Credits.
 
-                        Admin admin = Admin(username,password,dateCreated,credits);
+                        Admin* admin = new Admin(username,password,dateCreated,credits);
 
                         std::getline(file, line);
                         while (line == "LIBRARY-ITEM")
@@ -148,11 +148,11 @@ List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-                            LibraryItem tmpLibraryItem(datePurchased, tmpGame);
-                            admin.library.addInFront(&tmpLibraryItem);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame);
+                            admin->library.addInFront(tmpLibraryItem);
                         }
 
-                        account.getUsers().addInFront(&admin);
+                        account->getUsers().addInFront(admin);
                     }
                     else if (line == "ACCOUNT-PLAYER")
                     {
@@ -168,7 +168,7 @@ List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
                         std::getline(file, line);
                         int credits = std::stoi(line);      // Credits.
 
-                        Player player = Player(username, password, dateCreated, credits);
+                        Player* player = new Player(username, password, dateCreated, credits);
 
                         std::getline(file, line);
                         while (line == "LIBRARY-ITEM")
@@ -193,20 +193,22 @@ List<Account> Utils::ProcessFileData(Application& app, const std::string& dir)
                                 }
                             }
 
-                            LibraryItem tmpLibraryItem(datePurchased, tmpGame);
-                            player.library.addInFront(&tmpLibraryItem);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame);
+                            player->library.addInFront(tmpLibraryItem);
                         }
 
                             //account.getUsers().addInFront(&player);
-                            account.addUser(&player);
-                        }
+                            account->addUser(player);
+                            
                     }
+                }
                 
                     accounts.addAtEnd(account);
-                }
             }
         }
-    return accounts;
+    }
+    
+        return accounts;
 }
 
 Date Utils::parseDate(const std::string& stringDate)

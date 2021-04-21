@@ -20,7 +20,8 @@ class User
 		virtual std::vector<LibraryItem*>& GetLibrary();
 		virtual void AddLibraryItem(Date dt, Game*& game);
 		virtual bool HasPermissions();
-		const Date GetDate() const;
+		Date GetDate() const;
+		const std::string getDateAsString() const;
 
 	private:
 		std::string username;

@@ -56,8 +56,13 @@ bool User::HasPermissions()
 	return false;
 }
 
-const Date User::GetDate() const
+Date User::GetDate() const
 {
 	return created;
+}
+
+const std::string User::getDateAsString() const
+{
+	return GetDate().GetDate();
 }
 

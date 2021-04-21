@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-List<Game> fileHandler::ReadGameDataFromFile(const std::string& directory)
+List<Game> fileHandler::ReadGameDataFromFile(const std::string& dir)
 {
     // declare/initialise variables.
     int lineCounter = 0;
@@ -10,7 +10,7 @@ List<Game> fileHandler::ReadGameDataFromFile(const std::string& directory)
     List<Game> games;
 
     // open file.
-    std::ifstream file(directory, std::ios_base::app);
+    std::ifstream file(dir, std::ios_base::app);
 
     // tmp buffer variables.
     int id = 0;
@@ -136,7 +136,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
                             admin->library.push_back(tmpLibraryItem);
                         }
 
@@ -183,7 +183,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                 }
                             }
 
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
                             player->library.push_back(tmpLibraryItem);
                         }
 
@@ -263,7 +263,72 @@ Date fileHandler::parseDate(const std::string& stringDate)
 
 }
 
-void fileHandler::savefile()
+void fileHandler::saveToFile(Application& app, const std::string& dir)
 {
+    // open file.
+    std::ofstream file(dir);
+    
+    if (file.is_open())
+    {
+        // save Game information.
+        for (int i = 0; i < app.GetStore().getGames().length(); i++)
+        {
+            file << "GAME" << std::endl;
+            file << app.GetStore().getGames()[i]->GetID() << std::endl;
+            file << app.GetStore().getGames()[i]->GetName() << std::endl;
+            file << app.GetStore().getGames()[i]->GetDescription() << std::endl;
+            file << app.GetStore().getGames()[i]->GetCost() << std::endl;
+            file << app.GetStore().getGames()[i]->GetRating() << std::endl;
+        }
+
+        // save Account information.
+        for (int i = 0; i < app.accounts.length(); i++)
+        {
+            file << "ACCOUNT" << std::endl;
+            file << app.accounts[i]->getDateCreatedAsString() << std::endl;
+            file << app.accounts[i]->getEmail() << std::endl;
+            file << app.accounts[i]->getPassword() << std::endl;
+        }
+
+        // save Account Player & Admin information.
+        for (int i = 0; i < app.accounts.length(); i++)
+        {
+            for (int j = 0; j < app.accounts[i]->getUsers().length(); j++)
+            {
+                // Is the user an admin?..
+                if (app.accounts[i]->getUsers()[j]->HasPermissions())
+                {
+                    file << "ACCOUNT-ADMIN" << std::endl;
+                }
+                else // otherwise its a player..
+                {
+                    file << "ACCOUNT-PLAYER" << std::endl;
+                }
+                
+                file << app.accounts[i]->getUsers()[j]->getDateAsString() << std::endl;
+                file << app.accounts[i]->getUsers()[j]->GetUsername() << std::endl;
+                file << app.accounts[i]->getUsers()[j]->GetPassword() << std::endl;
+                file << app.accounts[i]->getUsers()[j]->GetCredit() << std::endl;
+            }
+        }
+
+        // save Library-Item information.
+        for (int i = 0; i < app.accounts.length(); i++)
+        {
+            for (int j = 0; j < app.accounts[i]->getUsers().length(); j++)
+            {
+                for (int k = 0; k < app.accounts[i]->getUsers()[j]->GetLibrary().size(); k++)
+                {
+                    file << "LIBRARY-ITEM" << std::endl;
+
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame()->GetID() << std::endl;
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->getPurchaseDate().GetDate() << std::endl;
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetGameTime() << std::endl;
+                }
+                
+            }
+        }
+        file.close();
+    }
 }
 

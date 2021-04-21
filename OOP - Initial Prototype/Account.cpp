@@ -36,3 +36,13 @@ std::string Account::getPassword()
 {
 	return password;
 }
+
+Date Account::getDateCreated()
+{
+	return created;
+}
+
+std::string Account::getDateCreatedAsString()
+{
+	return created.GetDate();
+}

@@ -11,6 +11,7 @@ class LibraryItem
 		const Game* GetLibraryGame();
 		int GetGameTime();
 		void AddGameTime(int time);
+		Date getPurchaseDate() const;
 	private:
 		const Game *game;
 		const Date purchased;  

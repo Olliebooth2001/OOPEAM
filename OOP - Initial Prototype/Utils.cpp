@@ -51,7 +51,7 @@ std::string Utils::FormatPlaytime(float gametime)
     {
         gametime = gametime / 60;
         int hours = static_cast<int>(gametime);
-        str = std::to_string(hours) + " hours";
+        str = std::to_string(hours) + " Hours";
         return str;
     }
     else {

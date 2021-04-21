@@ -8,10 +8,11 @@
 #include "Utils.h"
 #include "Date.h"
 #include "MainMenu.h"
+#include "fileHandler.h"
 
 // TODO: Remove from global scope once menu system is integrated
 Application app;
-Utils utils;
+fileHandler handler;
 
 void createHardcodedTestData()
 {	
@@ -292,7 +293,7 @@ void main()
 	// TODO: Remove call to dummy data, instead use Load and Save
 	//createHardcodedTestData();
 
-	List<Game> GameData = utils.ReadGameDataFromFile("Data.txt");
+	List<Game> GameData = handler.ReadGameDataFromFile("Data.txt");
 
 	for (int i = 0; i < GameData.length(); i++)
 	{
@@ -306,7 +307,7 @@ void main()
 		);
 	}
 
-	List<Account*> accounts = utils.ProcessFileData(app, "Data.txt");
+	List<Account*> accounts = handler.ProcessFileData(app, "Data.txt");
 
 	for (int i = 0; i < accounts.length(); i++)
 	{

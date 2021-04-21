@@ -63,11 +63,11 @@ void createHardcodedTestData()
 	Player* u3 = new Player("Charlie", "password", Date(2018,9,24), 20);
 
 	// With some games in their library
-	u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]));
+	//u1->library.addInFront(new LibraryItem(Date(2018,06,17), app.GetStore().getGames()[1]));
 	//u1->library[1] = new LibraryItem("2018-06-18", app.GetStore().games.first());
-	u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]));
+	//u2->library.addInFront(new LibraryItem(Date(2018,9,19), app.GetStore().getGames()[0]));
 	//u2->library[1] = new LibraryItem("2018-09-19", app.GetStore().games[3]);
-	u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]));
+	//u3->library.addInFront(new LibraryItem(Date(2018,9,24), app.GetStore().getGames()[2]));
 
 
 	// Make an account and attach the users
@@ -292,7 +292,9 @@ void main()
 {
 	// TODO: Remove call to dummy data, instead use Load and Save
 	//createHardcodedTestData();
-
+	Utils ut = Utils();
+	std::string ab = ut.FormatPlaytime(70);
+	std::cout << ab;
 	List<Game> GameData = handler.ReadGameDataFromFile("Data.txt");
 
 	for (int i = 0; i < GameData.length(); i++)

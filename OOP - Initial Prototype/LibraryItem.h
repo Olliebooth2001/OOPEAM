@@ -6,12 +6,13 @@
 class LibraryItem
 {
 	public:
-		LibraryItem(const Date&, Game*);
+		LibraryItem(const Date&, Game*, float playtime);
 		~LibraryItem();
 		const Game* GetLibraryGame();
 		int GetGameTime();
 		void AddGameTime(int time);
 	private:
 		const Game *game;
-		const Date purchased;  
+		const Date purchased;
+		float playtime;
 };

@@ -11,7 +11,7 @@ void ProfileMenu::OutputOptions()
 	Line("Credits: " + std::to_string(app->GetCurrentUser()->GetCredit()));
 	Line("Games");
 	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
-		Line(std::to_string(i) + ") " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName() + "			Playtime: " + util.FormatPlaytime(app->GetCurrentUser()->GetLibrary()[i]->GetGameTime()));
+		Line(std::to_string(i + 1) + ") " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName() + "			Playtime: " + util.FormatPlaytime(app->GetCurrentUser()->GetLibrary()[i]->GetGameTime()));
 	}
 	Option('P', "Play Games");
 	if (app->GetCurrentUser()->HasPermissions()) {

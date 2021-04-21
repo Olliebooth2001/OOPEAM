@@ -29,3 +29,35 @@ void User::AddCredit(int amount)
 	credit = credit + amount;
 }
 
+bool User::EnoughCredit(int amount)
+{
+	if (credit >= amount) return true;
+
+	return false;
+}
+
+void User::BuyGame(int amount)
+{
+	if (EnoughCredit(amount)) {
+		credit = credit - amount;
+	}
+
+}
+
+List<LibraryItem*>& User::GetLibrary() {
+	return List<LibraryItem*>();
+}
+
+void User::AddLibraryItem(Date date, Game*& game) {
+}
+
+bool User::HasPermissions()
+{
+	return false;
+}
+
+const Date User::GetDate() const
+{
+	return created;
+}
+

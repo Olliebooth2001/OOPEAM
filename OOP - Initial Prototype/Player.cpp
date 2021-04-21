@@ -7,8 +7,18 @@ Player::Player(const std::string& username, const std::string& password, const D
 
 Player::~Player()
 {
-	for (int i = 0; i < 2; ++i)
+	for (int i = 0; i < library.length(); ++i)
 	{
 		delete library[i];
 	}
+}
+
+List<LibraryItem*>& Player::GetLibrary()
+{
+	return library;
+}
+
+void Player::AddLibraryItem(Date date,Game*& game)
+{
+	library.addAtEnd(new LibraryItem(date, game));
 }

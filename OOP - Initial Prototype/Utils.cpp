@@ -1,5 +1,7 @@
 #include "Utils.h"
 
+
+
 std::string Utils::getLineFromUser()
 {
     std::string input;
@@ -11,6 +13,8 @@ char Utils::getCharFromUser()
 {
     return toupper(getLineFromUser()[0]);
 }
+
+
 bool Utils::StartsWith(std::string fullText, std::string searchText) {
 
     int letters = searchText.length();
@@ -25,10 +29,8 @@ bool Utils::StartsWith(std::string fullText, std::string searchText) {
     }
 
 }
-void Utils::openfile()
-{
-}
+//void Utils::openfile()
+//{
+//}
 
-void Utils::savefile()
-{
-}
+

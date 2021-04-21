@@ -9,6 +9,8 @@
 #include "Admin.h"
 #include "LibraryItem.h"
 #include <algorithm> 
+#include <random>
+#include <string>
 
 //#include "Application.h"
 
@@ -24,12 +26,16 @@ private:
     
     static bool StartsWith(std::string fullText, std::string searchText);
 
+    int getRandomPlayInt();
+
+    std::string FormatPlaytime(float gametime);
+
 
 
     // TODO: 2 versions of ToUpper
     static std::string ToUpper(std::string input);
     static std::string ToUpperRecursive(std::string input);
-
+    int randomint;
     std::string input;
     std::string fullText;
     std::string searchText;

@@ -136,7 +136,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
                             admin->library.push_back(tmpLibraryItem);
                         }
 
@@ -183,7 +183,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                 }
                             }
 
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, 0);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
                             player->library.push_back(tmpLibraryItem);
                         }
 
@@ -317,19 +317,17 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
         {
             for (int j = 0; j < app.accounts[i]->getUsers().length(); j++)
             {
-                for (int k = 0; k < app.accounts[i]->getUsers()[j]->GetLibrary().length(); k++)
+                for (int k = 0; k < app.accounts[i]->getUsers()[j]->GetLibrary().size(); k++)
                 {
                     file << "LIBRARY-ITEM" << std::endl;
 
-                    // game id.
-                    //file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame().
-                    //file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame().g
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame()->GetID() << std::endl;
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->getPurchaseDate().GetDate() << std::endl;
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetGameTime() << std::endl;
                 }
                 
             }
         }
-
-
         file.close();
     }
 }

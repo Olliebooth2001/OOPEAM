@@ -24,4 +24,9 @@ void LibraryItem::AddGameTime(int time)
 	playtime = playtime + time;
 }
 
+Date LibraryItem::getPurchaseDate() const
+{
+	return purchased;
+}
+
 

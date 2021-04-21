@@ -313,7 +313,7 @@ void main()
 	{
 		app.accounts.addAtEnd(accounts[i]);
 	}
-	handler.saveToFile(app, "test.txt");
+	handler.saveToFile(app, "Data.txt");
 
 	// TODO: app.Load();
 	MainMenu("MAIN MENU", &app);

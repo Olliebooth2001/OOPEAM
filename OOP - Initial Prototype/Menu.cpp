@@ -87,7 +87,7 @@ void Menu::Header()
 #endif
 
 	std::cout << '\n';
-	std::cout << "  -= " << title << " =-  \n";
+	std::cout << "  -= " << Utils::ToUpperRecursive(title) << " =-  \n";
 	std::cout << '\n';
 }
 

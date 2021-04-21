@@ -142,7 +142,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
 
 
 
-                        account->getUsers().addInFront(admin);
+                        account->addUser(admin);
                     }
                     else if (line == "ACCOUNT-PLAYER")
                     {

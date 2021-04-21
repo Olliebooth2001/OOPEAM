@@ -12,7 +12,7 @@ void GameMenu::OutputOptions()  {
 	Line(game->GetDescription()) ;
 	Line(std::to_string(game->GetCost()));
 	
-	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
+	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
 		if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)
 		{
 			flag = true;

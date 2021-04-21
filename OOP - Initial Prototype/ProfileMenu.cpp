@@ -9,7 +9,7 @@ void ProfileMenu::OutputOptions()
 {
 	Line("Credits: " + std::to_string(app->GetCurrentUser()->GetCredit()));
 	Line("Games");
-	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
+	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
 		Line(i + " " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName());
 	}
 	if (app->GetCurrentUser()->HasPermissions()) {

@@ -11,6 +11,7 @@ char Utils::getCharFromUser()
 {
     return toupper(getLineFromUser()[0]);
 }
+
 bool Utils::StartsWith(std::string fullText, std::string searchText) {
 
     int letters = searchText.length();
@@ -25,6 +26,13 @@ bool Utils::StartsWith(std::string fullText, std::string searchText) {
     }
 
 }
+
+int Utils::getRandomPlayInt()
+{
+    int randnum;
+    return randnum = rand() % 60 + 1;
+}
+
 void Utils::openfile()
 {
 }

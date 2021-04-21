@@ -2,6 +2,8 @@
 
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <stdlib.h>
 
 class Utils
 {
@@ -11,6 +13,7 @@ class Utils
     void openfile();
     void savefile();
     static bool StartsWith(std::string fullText, std::string searchText);
+    int getRandomPlayInt();
 
     // TODO: 2 versions of ToUpper
     std::string fullText;

@@ -30,7 +30,7 @@ bool Utils::StartsWith(std::string fullText, std::string searchText) {
 int Utils::getRandomPlayInt()
 {
     int randnum;
-    return randnum = rand() % 60 + 1;
+    return randnum = 1+ (rand() % 60);
 }
 
 void Utils::openfile()

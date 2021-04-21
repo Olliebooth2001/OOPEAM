@@ -44,8 +44,8 @@ void User::BuyGame(int amount)
 
 }
 
-List<LibraryItem*>& User::GetLibrary() {
-	return List<LibraryItem*>();
+std::vector<LibraryItem*>& User::GetLibrary() {
+	return std::vector<LibraryItem*>();
 }
 
 void User::AddLibraryItem(Date date, Game*& game) {

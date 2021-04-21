@@ -8,19 +8,28 @@ GameMenu::GameMenu(const std::string& title, Application* app, Game* game) : Men
 
 
 void GameMenu::OutputOptions()  {
-	bool flag = false;
-	Line(game->GetDescription()) ;
-	Line(std::to_string(game->GetCost()));
-	
-	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().length(); i++) {
-		if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)
-		{
-			flag = true;
+	if (app->IsUserLoggedIn()) {
+		bool flag = false;
+		Line(game->GetDescription());
+		Line(std::to_string(game->GetCost()));
+
+		for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
+			if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)
+			{
+				flag = true;
+			}
+		}
+		if (flag == false) {
+			Option('D', "Buy Game");
 		}
 	}
-	if (flag == false) {
-		Option('D', "Buy Game");
+	else {
+		bool flag = false;
+		Line(game->GetDescription());
+		Line(std::to_string(game->GetCost()));
+
 	}
+
 }
 
 bool GameMenu::HandleChoice(char choice) {

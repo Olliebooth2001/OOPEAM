@@ -4,6 +4,7 @@
 #include "Date.h"
 #include "List.h"
 #include "LibraryItem.h"
+#include <vector>
 
 class User
 {
@@ -16,7 +17,7 @@ class User
 		void AddCredit(int amount);
 		bool EnoughCredit(int amount);
 		void BuyGame(int amount);
-		virtual List<LibraryItem*>& GetLibrary();
+		virtual std::vector<LibraryItem*>& GetLibrary();
 		virtual void AddLibraryItem(Date dt, Game*& game);
 		virtual bool HasPermissions();
 		Date GetDate() const;

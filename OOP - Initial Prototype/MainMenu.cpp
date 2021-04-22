@@ -136,15 +136,16 @@ bool MainMenu::HandleChoice(char choice)
 						std::string tempPassword = Question("Please enter password");
 						int tempUsername = int_1;
 
-						if (app->LoginAccount(tempPassword, int_1))
+						if (tempPassword == "B") {
+							break;
+						}
+						else if (app->LoginAccount(tempPassword, int_1))
 						{
 							app->LoginAccount(int_1);
 							MainMenu("MAIN MENU", app);
 							break;
 						}
-						else if (tempPassword == "B") {
-							break;
-						}
+
 					}
 				}
 				else {

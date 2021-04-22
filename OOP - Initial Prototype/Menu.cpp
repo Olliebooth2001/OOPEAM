@@ -21,6 +21,7 @@ void Menu::Paint()
 		char choice = Utils::getCharFromUser();
 	
 		
+
 		if (choice == 'B')
 		{
 			readyToGoBack = true;

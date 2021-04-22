@@ -22,7 +22,9 @@ Date Date::GetCurrentDate() {
     return date;
     //std::cout << Day << " / " << Month << " / " << Year;
 }
-std::string Date::GetDate() {
+
+std::string Date::GetDate() const
+{
 
     std::string date = std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day);
     return date;

@@ -19,7 +19,6 @@ void LoginUserMenu::OutputOptions()
 	}
 
 	std::string selectedUser = Question("Please select user");
-
 	int int_1 = stoi(selectedUser);
 	int_1--;
 	std::string username;

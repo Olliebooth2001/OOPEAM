@@ -126,21 +126,34 @@ bool MainMenu::HandleChoice(char choice)
 			}
 
 			std::string selectedAccount = Question("Please select account");
+			try {
+				int int_1 = stoi(selectedAccount);
+				int_1--;
+				if (int_1 <= app->GetAccounts().length()) {
+					std::string username;
 
-			int int_1 = stoi(selectedAccount);
-			int_1--;
-			std::string username;
+					while (true) {
+						std::string tempPassword = Question("Please enter password");
+						int tempUsername = int_1;
 
-			while (true) {
-				std::string tempPassword = Question("Please enter password");
-				int tempUsername = int_1;
-
-				if (app->LoginAccount(tempPassword, int_1)) 
-				{
-					app->LoginAccount(int_1);
-					MainMenu("MAIN MENU", app);
-					break;
+						if (app->LoginAccount(tempPassword, int_1))
+						{
+							app->LoginAccount(int_1);
+							MainMenu("MAIN MENU", app);
+							break;
+						}
+						else if (tempPassword == "B") {
+							break;
+						}
+					}
 				}
+				else {
+					Line("Invalid Input");
+				}
+
+			}
+			catch (std::exception ex) {
+				Line("ahhh");
 			}
 
 		}

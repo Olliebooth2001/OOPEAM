@@ -17,6 +17,10 @@
 class Utils
 {
 private:
+    int randomint;
+    std::string input;
+    std::string fullText;
+    std::string searchText;
     
 
   public:
@@ -33,9 +37,6 @@ private:
 
     static std::string ToUpper(std::string input);
     static std::string ToUpperRecursive(std::string input);
-    int randomint;
-    std::string input;
-    std::string fullText;
-    std::string searchText;
+    
 
 };

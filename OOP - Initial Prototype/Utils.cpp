@@ -69,8 +69,6 @@ std::string Utils::FormatPlaytime(float gametime)
         return str;
     }
 }
-//void Utils::openfile()
-//{
-//}
+
 
 

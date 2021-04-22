@@ -6,7 +6,7 @@
 class LibraryItem
 {
 	public:
-		LibraryItem(const Date&, Game*, float playtime);
+		LibraryItem(const Date& purchased, Game* game, float playtime);
 		~LibraryItem();
 		const Game* GetLibraryGame();
 		int GetGameTime();

@@ -41,9 +41,6 @@ bool Application::LogIn(std::string& username, std::string& password) {
 		return false;
 	}
 
-
-
-
 }
 
 
@@ -74,15 +71,11 @@ Store& Application::GetStore()
 
 void Application::LoginAccount(int i)
 {
-	// TODO: This currently always logs you in as the first account
 	currentAccount = accounts[i];
-
-	
 }
 
 bool Application::LoginAccount(const std::string& password, int index)
 {
-	
 	
 	if (accounts[index]->getPassword() == password)
 	{

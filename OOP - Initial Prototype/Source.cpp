@@ -22,8 +22,8 @@ void main()
 			GameData[i].GetCost(),
 			GameData[i].GetRating(),
 			GameData[i].GetID(),
-			1,
-			1)
+			GameData[i].GetLikes(),
+			GameData[i].GetDislikes())
 			
 			
 		);

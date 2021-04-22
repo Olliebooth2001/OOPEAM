@@ -13,9 +13,9 @@ class Game
 		const std::string& GetDescription() const;
 		int GetCost() const;
 		int GetRating() const;
-		int GetLikes();
-		int GetDislikes();
-		int GetRating();
+		float GetLikes();
+		float GetDislikes();
+		float GetRating();
 		void addLike();
 		void addDislike();
 	private:
@@ -24,7 +24,7 @@ class Game
 		int cost;
 		int ageRating;
 		int id;
-		int likes;
-		int dislikes;
-		int rating;
+		float likes;
+		float dislikes;
+		float rating;
 };

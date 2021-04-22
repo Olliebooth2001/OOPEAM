@@ -13,6 +13,9 @@ void GameMenu::OutputOptions()  {
 		bool flag2 = false;
 		Line(game->GetDescription());
 		Line(std::to_string(game->GetCost()));
+		if (game->GetRating() == 0) { Line("Rating: not yet rated!"); }
+		else { Line("Rating: " + std::to_string(game->GetRating()) + "%"); }
+		
 
 		for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
 			if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)

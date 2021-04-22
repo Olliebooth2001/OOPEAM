@@ -34,19 +34,33 @@ int Game::GetRating() const
 	return ageRating;
 }
 
-int Game::GetLikes()
+float Game::GetLikes()
 {
 	return likes;
 }
 
-int Game::GetDislikes()
+float Game::GetDislikes()
 {
 	return dislikes;
 }
 
-int Game::GetRating()
+float Game::GetRating()
 {
-	return (likes / (dislikes+likes))*100;
+
+	if (dislikes == 0 && likes == 0)
+	{
+		return 0;
+	}
+
+	if (dislikes == 0 && likes > 0)
+	{
+		return 100.0f;
+	}
+	
+	
+	return (likes / (dislikes + likes)) * 100;
+	
+	
 }
 
 void Game::addLike()

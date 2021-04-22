@@ -21,8 +21,15 @@ void main()
 			GameData[i].GetDescription(),
 			GameData[i].GetCost(),
 			GameData[i].GetRating(),
-			GameData[i].GetID())
+			GameData[i].GetID(),
+			GameData[i].GetLikes(),
+			GameData[i].GetDislikes())
+			
+			
 		);
+
+		
+		
 	}
 
 	List<Account*> accounts = handler.ProcessFileData(app, "Data.txt");

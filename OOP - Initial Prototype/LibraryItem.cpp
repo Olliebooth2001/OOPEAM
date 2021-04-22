@@ -9,12 +9,12 @@ LibraryItem::~LibraryItem()
 {
 }
 
-const Game* LibraryItem::GetLibraryGame()
+const Game* LibraryItem::GetLibraryGame() const
 {
 	return game;
 }
 
-int LibraryItem::GetGameTime()
+int LibraryItem::GetGameTime() const
 {
 	return playtime;
 }

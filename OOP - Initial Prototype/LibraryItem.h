@@ -8,8 +8,8 @@ class LibraryItem
 	public:
 		LibraryItem(const Date& purchased, Game* game, float playtime, bool hasRated);
 		~LibraryItem();
-		const Game* GetLibraryGame();
-		int GetGameTime();
+		const Game* GetLibraryGame() const;
+		int GetGameTime() const;
 		void AddGameTime(int time);
 		Date getPurchaseDate() const;
 		void setHasRated();

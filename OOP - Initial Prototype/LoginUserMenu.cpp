@@ -20,20 +20,33 @@ void LoginUserMenu::OutputOptions()
 
 	std::string selectedUser = Question("Please select user");
 
-	int int_1 = stoi(selectedUser);
-	int_1--;
-	std::string username;
-	// this would need to go to a LoginMenu - similar to StoreMenu
-	// instead we just set logged in to true on the main app object
-	while (true) {
-		std::string tempPassword = Question("Please enter password");
-		std::string tempUsername = app->GetCurrentAccount()->getUsers()[int_1]->GetUsername();
+	try {
+		int int_1 = stoi(selectedUser);
+		int_1--;
+		if (int_1 <= app->GetCurrentAccount()->getUsers().length()) {
+			std::string username;
+			// this would need to go to a LoginMenu - similar to StoreMenu
+			// instead we just set logged in to true on the main app object
+			while (true) {
+				std::string tempPassword = Question("Please enter password");
+				std::string tempUsername = app->GetCurrentAccount()->getUsers()[int_1]->GetUsername();
 
-		if (app->LogIn(tempUsername, tempPassword)) {
-			app->LoginUser(int_1);
-			MainMenu("MAIN MENU", app);
-			break;
+				if (tempPassword == "B") {
+					break;
+				}
+				if (app->LogIn(tempUsername, tempPassword)) {
+					app->LoginUser(int_1);
+					MainMenu("MAIN MENU", app);
+					break;
+				}
+			}
 		}
+		else {
+			Line("Error on Input");
+		}
+	}
+	catch (std::exception e) {
+		Line("Error on Input");
 	}
 
 }

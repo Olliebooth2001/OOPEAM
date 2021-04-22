@@ -15,6 +15,8 @@ class Application
 		bool IsUserLoggedIn() const;
 		Account* GetCurrentAccount() const;
 		User* GetCurrentUser() const;
+		List<Account*> GetAccounts();
+		void addAccount(Account* acc);
 
 		Store& GetStore();
 
@@ -27,7 +29,7 @@ class Application
 		
 
 
-		List <Account*> accounts;
+		
 	private:
 		Store store;
 		Account* currentAccount;
@@ -35,4 +37,5 @@ class Application
 
 		std::string username;
 		std::string password;
+		List <Account*> accounts;
 };

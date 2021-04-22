@@ -1,7 +1,7 @@
 #include "Game.h"
 
-Game::Game(const std::string& name, const std::string& desc, int cost, int rating, int ID)
-	: name(name), description(desc), cost(cost), ageRating(rating), id(ID)
+Game::Game(const std::string& name, const std::string& desc, int cost, int ageRating, int ID, int likes, int dislikes)
+	: name(name), description(desc), cost(cost), ageRating(ageRating), id(ID), likes(likes), dislikes(dislikes)
 {
 }
 
@@ -32,4 +32,29 @@ int Game::GetCost() const
 int Game::GetRating() const
 {
 	return ageRating;
+}
+
+int Game::GetLikes()
+{
+	return likes;
+}
+
+int Game::GetDislikes()
+{
+	return dislikes;
+}
+
+int Game::GetRating()
+{
+	return (likes / (dislikes+likes))*100;
+}
+
+void Game::addLike()
+{
+	likes++;
+}
+
+void Game::addDislike()
+{
+	dislikes++;
 }

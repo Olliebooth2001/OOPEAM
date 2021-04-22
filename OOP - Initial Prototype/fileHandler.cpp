@@ -18,6 +18,8 @@ List<Game> fileHandler::ReadGameDataFromFile(const std::string& dir)
     std::string desc = "";
     int cost = 0;
     int rating = 0;
+    int likes = 0;
+    int dislikes = 0;
 
     // check if file opened correctly.
     if (file.is_open())
@@ -46,12 +48,21 @@ List<Game> fileHandler::ReadGameDataFromFile(const std::string& dir)
             {
                 cost = std::stoi(line);
             }
-            else if (lineCounter == 5)  // Rating.
+            else if (lineCounter == 5)  // ageRating.
             {
                 rating = std::stoi(line);
 
+            }
+            else if (lineCounter == 6)  // Cost.
+            {
+                likes = std::stoi(line);
+            }
+            else if (lineCounter == 7)  // Cost.
+            {
+                dislikes = std::stoi(line);
+
                 // create game.
-                Game game(name, desc, cost, rating, id);
+                Game game(name, desc, cost, rating, id, likes, dislikes);
                 games.addAtEnd(game);
             }
 
@@ -129,6 +140,15 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                             std::getline(file, line);
                             Game* tmpGame = nullptr;
 
+                            bool hasRated = false;
+                            std::getline(file, line);
+                            if (line == "1")
+                            {
+                                bool hasRated = true;
+                            }
+                            
+                            
+
                             for (int i = 0; i < app.GetStore().getGames().length(); i++)
                             {
                                 if (app.GetStore().getGames()[i]->GetID() == GameID)
@@ -136,7 +156,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                     tmpGame = app.GetStore().getGames()[i];
                                 }
                             }
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours, hasRated);
                             admin->library.push_back(tmpLibraryItem);
                         }
 
@@ -175,6 +195,13 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                             std::getline(file, line);
                             Game* tmpGame = nullptr;
 
+                            bool hasRated = false;
+                            std::getline(file, line);
+                            if (line == "1")
+                            {
+                                bool hasRated = true;
+                            }
+
                             for (int i = 0; i < app.GetStore().getGames().length(); i++)
                             {
                                 if (app.GetStore().getGames()[i]->GetID() == GameID)
@@ -183,7 +210,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                 }
                             }
 
-                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
+                            LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours, hasRated);
                             player->library.push_back(tmpLibraryItem);
                         }
 
@@ -279,6 +306,8 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
             file << app.GetStore().getGames()[i]->GetDescription() << std::endl;
             file << app.GetStore().getGames()[i]->GetCost() << std::endl;
             file << app.GetStore().getGames()[i]->GetRating() << std::endl;
+            file << app.GetStore().getGames()[i]->GetLikes() << std::endl;
+            file << app.GetStore().getGames()[i]->GetDislikes() << std::endl;
         }
 
         // save Account information.
@@ -319,6 +348,11 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
                     file << app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame()->GetID() << std::endl;
                     file << app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->getPurchaseDate().GetDate() << std::endl;
                     file << app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->GetGameTime() << std::endl;
+                    if (app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->getHasRated())
+                    {
+                        file << "1" << std::endl;
+                    }
+                    else { file << "0" << std::endl;}
                 }
             }
         }

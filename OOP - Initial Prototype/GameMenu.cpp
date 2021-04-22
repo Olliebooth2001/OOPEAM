@@ -10,6 +10,7 @@ GameMenu::GameMenu(const std::string& title, Application* app, Game* game) : Men
 void GameMenu::OutputOptions()  {
 	if (app->IsUserLoggedIn()) {
 		bool flag = false;
+		bool flag2 = false;
 		Line(game->GetDescription());
 		Line(std::to_string(game->GetCost()));
 
@@ -21,6 +22,19 @@ void GameMenu::OutputOptions()  {
 		}
 		if (flag == false) {
 			Option('D', "Buy Game");
+		}
+		for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) 
+		{
+			if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game && !app->GetCurrentUser()->GetLibrary()[i]->getHasRated())
+			{
+				flag2 = true;
+				
+			}
+		}
+		if (flag2 == true)
+		{
+			Option('L', "Like Game");
+			Option('N', "Dislike Game");
 		}
 	}
 	else {
@@ -39,11 +53,34 @@ bool GameMenu::HandleChoice(char choice) {
 	{
 		if (app->GetCurrentUser()->EnoughCredit(game->GetCost())) {
 			app->GetCurrentUser()->BuyGame(game->GetCost());
-			Date dt = Date();
-			dt.GetCurrentDate();
+			Date dt = Date().GetCurrentDate();
+			//dt.GetCurrentDate();
 			app->GetCurrentUser()->AddLibraryItem(dt, game);
 		}
 	} break;
+	case 'L':
+	{
+		game->addLike();
+		for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
+			if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)
+			{
+				app->GetCurrentUser()->GetLibrary()[i]->setHasRated();
+			}
+		}
+
+
+	} break;
+	case 'N':
+	{
+		game->addDislike();
+		for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
+			if (app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame() == game)
+			{
+				app->GetCurrentUser()->GetLibrary()[i]->setHasRated();
+			}
+		}
+	
+	}
 	}
 	return true;
 }

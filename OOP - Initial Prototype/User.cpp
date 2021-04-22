@@ -48,6 +48,10 @@ std::vector<LibraryItem*>& User::GetLibrary() {
 	return std::vector<LibraryItem*>();
 }
 
+void User::AddToLibrary(LibraryItem* lib)
+{
+}
+
 void User::AddLibraryItem(Date date, Game*& game) {
 }
 

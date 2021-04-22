@@ -18,6 +18,7 @@ class User
 		bool EnoughCredit(int amount);
 		void BuyGame(int amount);
 		virtual std::vector<LibraryItem*>& GetLibrary();
+		virtual void AddToLibrary(LibraryItem* lib);
 		virtual void AddLibraryItem(Date dt, Game*& game);
 		virtual bool HasPermissions();
 		Date GetDate() const;

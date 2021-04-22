@@ -22,3 +22,8 @@ void Player::AddLibraryItem(Date date,Game*& game)
 {
 	library.push_back(new LibraryItem(date, game, 0));
 }
+
+void Player::AddToLibrary(LibraryItem* item)
+{
+	library.push_back(item);
+}

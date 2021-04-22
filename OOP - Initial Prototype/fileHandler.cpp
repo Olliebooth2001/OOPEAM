@@ -137,7 +137,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                                 }
                             }
                             LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
-                            admin->library.push_back(tmpLibraryItem);
+                            admin->AddToLibrary(tmpLibraryItem);
                         }
 
 
@@ -184,7 +184,7 @@ List<Account*> fileHandler::ProcessFileData(Application& app, const std::string&
                             }
 
                             LibraryItem* tmpLibraryItem = new LibraryItem(datePurchased, tmpGame, hours);
-                            player->library.push_back(tmpLibraryItem);
+                            player->AddToLibrary(tmpLibraryItem);
                         }
 
                         //account.getUsers().addInFront(&player);

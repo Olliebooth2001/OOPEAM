@@ -13,7 +13,8 @@ class Player : public User
 		~Player();
 		std::vector<LibraryItem*>& GetLibrary() override;
 		void AddLibraryItem(Date date, Game*& game) override;
-		std::vector<LibraryItem*> library; 
+		void AddToLibrary(LibraryItem* item) override;
+		
 	private:
-
+		std::vector<LibraryItem*> library;
 };

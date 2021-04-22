@@ -14,9 +14,9 @@ public:
 	void addUser(User* user);
 	void DeleteUser(User* user);
 
-	std::string getEmail();
-	std::string getPassword();
-	Date getDateCreated();
+	std::string getEmail() const;
+	std::string getPassword() const;
+	Date getDateCreated() const;
 	std::string getDateCreatedAsString();
 private:
 	List <User*> users;

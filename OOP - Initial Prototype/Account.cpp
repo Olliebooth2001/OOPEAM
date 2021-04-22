@@ -27,17 +27,17 @@ void Account::DeleteUser(User* user)
 	users.deleteOne(user);
 }
 
-std::string Account::getEmail()
+std::string Account::getEmail() const
 {
 	return email;
 }
 
-std::string Account::getPassword()
+std::string Account::getPassword() const
 {
 	return password;
 }
 
-Date Account::getDateCreated()
+Date Account::getDateCreated() const
 {
 	return created;
 }

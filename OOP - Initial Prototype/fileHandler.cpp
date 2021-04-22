@@ -309,11 +309,22 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
                 file << app.accounts[i]->getUsers()[j]->GetUsername() << std::endl;
                 file << app.accounts[i]->getUsers()[j]->GetPassword() << std::endl;
                 file << app.accounts[i]->getUsers()[j]->GetCredit() << std::endl;
+
+                //LIBRARY ITEMS HERE
+
+                for (int k = 0; k < app.accounts[i]->getUsers()[j]->GetLibrary().size(); k++)
+                {
+                    file << "LIBRARY-ITEM" << std::endl;
+
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame()->GetID() << std::endl;
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->getPurchaseDate().GetDate() << std::endl;
+                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetGameTime() << std::endl;
+                }
             }
         }
 
         // save Library-Item information.
-        for (int i = 0; i < app.accounts.length(); i++)
+        /*for (int i = 0; i < app.accounts.length(); i++)
         {
             for (int j = 0; j < app.accounts[i]->getUsers().length(); j++)
             {
@@ -327,7 +338,7 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
                 }
                 
             }
-        }
+        }*/
         file.close();
     }
 }

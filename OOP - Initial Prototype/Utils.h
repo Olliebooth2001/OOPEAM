@@ -31,8 +31,6 @@ private:
     std::string FormatPlaytime(float gametime);
 
 
-
-    // TODO: 2 versions of ToUpper
     static std::string ToUpper(std::string input);
     static std::string ToUpperRecursive(std::string input);
     int randomint;

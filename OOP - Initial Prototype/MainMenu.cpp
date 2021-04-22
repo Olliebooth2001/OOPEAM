@@ -118,11 +118,11 @@ bool MainMenu::HandleChoice(char choice)
 		{
 			//encapsulate
 			int count = 0;
-			for (int i = 0; i < app->accounts.length(); i++) 
+			for (int i = 0; i < app->GetAccounts().length(); i++)
 			{
 				count++;
 
-				Option(count, app->accounts[i]->getEmail());
+				Option(count, app->GetAccounts()[i]->getEmail());
 			}
 
 			std::string selectedAccount = Question("Please select account");

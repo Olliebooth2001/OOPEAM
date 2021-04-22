@@ -29,7 +29,7 @@ void main()
 
 	for (int i = 0; i < accounts.length(); i++)
 	{
-		app.accounts.addAtEnd(accounts[i]);
+		app.addAccount(accounts[i]);
 	}
 	
 

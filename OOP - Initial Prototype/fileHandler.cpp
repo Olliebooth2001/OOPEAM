@@ -282,21 +282,21 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
         }
 
         // save Account information.
-        for (int i = 0; i < app.accounts.length(); i++)
+        for (int i = 0; i < app.GetAccounts().length(); i++)
         {
             file << "ACCOUNT" << std::endl;
-            file << app.accounts[i]->getDateCreatedAsString() << std::endl;
-            file << app.accounts[i]->getEmail() << std::endl;
-            file << app.accounts[i]->getPassword() << std::endl;
+            file << app.GetAccounts()[i]->getDateCreatedAsString() << std::endl;
+            file << app.GetAccounts()[i]->getEmail() << std::endl;
+            file << app.GetAccounts()[i]->getPassword() << std::endl;
         }
 
         // save Account Player & Admin information.
-        for (int i = 0; i < app.accounts.length(); i++)
+        for (int i = 0; i < app.GetAccounts().length(); i++)
         {
-            for (int j = 0; j < app.accounts[i]->getUsers().length(); j++)
+            for (int j = 0; j < app.GetAccounts()[i]->getUsers().length(); j++)
             {
                 // Is the user an admin?..
-                if (app.accounts[i]->getUsers()[j]->HasPermissions())
+                if (app.GetAccounts()[i]->getUsers()[j]->HasPermissions())
                 {
                     file << "ACCOUNT-ADMIN" << std::endl;
                 }
@@ -305,20 +305,20 @@ void fileHandler::saveToFile(Application& app, const std::string& dir)
                     file << "ACCOUNT-PLAYER" << std::endl;
                 }
                 
-                file << app.accounts[i]->getUsers()[j]->getDateAsString() << std::endl;
-                file << app.accounts[i]->getUsers()[j]->GetUsername() << std::endl;
-                file << app.accounts[i]->getUsers()[j]->GetPassword() << std::endl;
-                file << app.accounts[i]->getUsers()[j]->GetCredit() << std::endl;
+                file << app.GetAccounts()[i]->getUsers()[j]->getDateAsString() << std::endl;
+                file << app.GetAccounts()[i]->getUsers()[j]->GetUsername() << std::endl;
+                file << app.GetAccounts()[i]->getUsers()[j]->GetPassword() << std::endl;
+                file << app.GetAccounts()[i]->getUsers()[j]->GetCredit() << std::endl;
 
                 //LIBRARY ITEMS HERE
 
-                for (int k = 0; k < app.accounts[i]->getUsers()[j]->GetLibrary().size(); k++)
+                for (int k = 0; k < app.GetAccounts()[i]->getUsers()[j]->GetLibrary().size(); k++)
                 {
                     file << "LIBRARY-ITEM" << std::endl;
 
-                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame()->GetID() << std::endl;
-                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->getPurchaseDate().GetDate() << std::endl;
-                    file << app.accounts[i]->getUsers()[j]->GetLibrary()[k]->GetGameTime() << std::endl;
+                    file << app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->GetLibraryGame()->GetID() << std::endl;
+                    file << app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->getPurchaseDate().GetDate() << std::endl;
+                    file << app.GetAccounts()[i]->getUsers()[j]->GetLibrary()[k]->GetGameTime() << std::endl;
                 }
             }
         }

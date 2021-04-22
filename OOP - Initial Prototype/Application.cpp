@@ -109,3 +109,13 @@ void Application::LogoutAccout()
 {
 	currentAccount = nullptr;
 }
+
+List<Account*>  Application::GetAccounts()
+{
+	return accounts;
+}
+
+void Application::addAccount(Account* acc)
+{
+	accounts.addAtEnd(acc);
+}

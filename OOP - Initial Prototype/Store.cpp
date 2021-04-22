@@ -61,7 +61,7 @@ List<Game*> Store::searchByName(std::string inputString) {
 	for (int i = 0; i < getGames().length(); i++) {
 
 
-		if (Utils::StartsWith(getGames()[i]->GetName(), inputString) == true) {
+		if (Utils::StartsWith(Utils::ToUpper(getGames()[i]->GetName()), Utils::ToUpper(inputString)) == true) {
 			getResults().addAtEnd(getGames()[i]);
 		}
 

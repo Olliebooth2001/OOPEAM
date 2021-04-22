@@ -9,10 +9,12 @@ void ProfileMenu::OutputOptions()
 {
 	Utils util = Utils();
 	Line("Credits: " + std::to_string(app->GetCurrentUser()->GetCredit()));
+	Line("=========================================================");
 	Line("Games");
 	for (int i = 0; i < app->GetCurrentUser()->GetLibrary().size(); i++) {
-		Line(std::to_string(i + 1) + ") " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName() + " Playtime: " + util.FormatPlaytime(app->GetCurrentUser()->GetLibrary()[i]->GetGameTime()));
+		Line(std::to_string(i + 1) + ") " + app->GetCurrentUser()->GetLibrary()[i]->GetLibraryGame()->GetName() + "			Playtime:	" + util.FormatPlaytime(app->GetCurrentUser()->GetLibrary()[i]->GetGameTime()));
 	}
+	Line("=========================================================");
 	Option('P', "Play Games");
 	if (app->GetCurrentUser()->HasPermissions()) {
 		Option('A', "Add User");
